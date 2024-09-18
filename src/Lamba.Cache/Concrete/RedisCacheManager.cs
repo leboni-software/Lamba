@@ -1,18 +1,14 @@
 ﻿using Lamba.Cache.Abstract;
 using Microsoft.Extensions.Configuration;
 using StackExchange.Redis;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Text.Json;
-using System.Threading.Tasks;
 
 namespace Lamba.Cache.Concrete
 {
     public sealed class RedisCacheManager : ILambaCacheManager
     {
         private Lazy<Task<ConnectionMultiplexer>> _lazyConnection;
+
         public RedisCacheManager(IConfiguration configuration)
         {
             var redisConnection = configuration.GetConnectionString("Redis");
