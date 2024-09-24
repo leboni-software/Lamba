@@ -26,7 +26,7 @@ namespace Lamba.Infrastructure
                 opt.EnableDetailedErrors(isDebug);
                 opt.EnableSensitiveDataLogging(isDebug);
                 opt.UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
-                opt.UseNpgsql(configuration.GetConnectionString("WriterConnectionString"), sql => sql.EnableRetryOnFailure(3));
+                opt.UseNpgsql(configuration.GetConnectionString("ReaderConnectionString"), sql => sql.EnableRetryOnFailure(3));
             });
             return services;
         }
