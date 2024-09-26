@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Lamba.Infrastructure.Data.Configurations.Constants
+﻿namespace Lamba.Infrastructure.Data.Configurations.Constants
 {
     public static class NpgsqlEntityConfigurationConstant
     {

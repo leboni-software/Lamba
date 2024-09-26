@@ -1,16 +1,9 @@
 ﻿using Lamba.Domain.Concrete;
-using Lamba.Infrastructure.Data.Configurations.Constants;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Lamba.Infrastructure.Data.Configurations
 {
-    public class BaseAuditEntityConfiguration<TEntity,TKey> : BaseEntityConfiguration<TEntity,TKey>
+    public class BaseAuditEntityConfiguration<TEntity, TKey> : BaseEntityConfiguration<TEntity, TKey>
         where TEntity : BaseAuditEntity<TKey>
         where TKey : struct
     {

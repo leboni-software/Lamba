@@ -2,11 +2,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Lamba.Infrastructure
 {
@@ -14,7 +9,7 @@ namespace Lamba.Infrastructure
     {
         public static void AddLambaInfrastructureServices(this IServiceCollection services, IConfiguration configuration, bool isDevelopmentEnvironment)
         {
-            AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);            
+            AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
             services.AddDbContext<BaseWriterDbContext>(opt =>
             {
                 opt.EnableDetailedErrors(isDevelopmentEnvironment);
