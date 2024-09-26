@@ -8,14 +8,13 @@ namespace Lamba.Repository
 {
     public static class ServiceRegistration
     {
-        public static IServiceCollection AddLambaRepositoryServices(this IServiceCollection services, IConfiguration configuration, bool isDebug)
+        public static void AddLambaRepositoryServices(this IServiceCollection services, IConfiguration configuration, bool isDevelopmentEnvironment)
         {
-            services.AddLambaInfrastructureServices(configuration, isDebug);
+            services.AddLambaInfrastructureServices(configuration, isDevelopmentEnvironment);
             services.AddScoped(typeof(IRepository<,,>), typeof(BaseRepository<,,>));
             services.AddScoped(typeof(IReaderRepository<,>), typeof(BaseReaderRepository<,>));
             services.AddScoped(typeof(IWriterRepository<,>), typeof(BaseWriterRepository<,>));
             services.AddScoped<IUnitOfWork, UnitOfWork>();
-            return services;
         }
     }
 }

@@ -12,7 +12,7 @@ namespace Lamba.Security
 {
     public static class ServiceRegistration
     {
-        public static IServiceCollection AddLambaSecurityServices(this IServiceCollection services, IConfiguration configuration)
+        public static void AddLambaSecurityServices(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddOptions<TokenOptions>().Bind(configuration.GetSection(nameof(TokenOptions)));
             services.AddSingleton<ITokenProvider, JwtTokenProvider>();
@@ -33,10 +33,9 @@ namespace Lamba.Security
                         ClockSkew = TimeSpan.Zero
                     };
                 });
-            return services;
         }
 
-        public static IServiceCollection AddLambaSwaggerGenWithAuthServices(this IServiceCollection services, string version = "v1", string title = "Lamba Api")
+        public static void AddLambaSwaggerGenWithAuthServices(this IServiceCollection services, string version = "v1", string title = "Lamba Api")
         {
             services.AddSwaggerGen(setup =>
             {
@@ -68,7 +67,6 @@ namespace Lamba.Security
                     }
                 });
             });
-            return services;
         }
     }
 }

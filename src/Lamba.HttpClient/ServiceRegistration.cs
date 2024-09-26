@@ -6,11 +6,10 @@ namespace Lamba.HttpClient
 {
     public static class ServiceRegistration
     {
-        public static IServiceCollection AddLambaHttpClientServices(this IServiceCollection services)
+        public static void AddLambaHttpClientServices(this IServiceCollection services)
         {
             services.AddHttpClient();
             services.AddSingleton<ILambaHttpClient, LambaHttpClient>();
-            return services;
         }
     }
 }

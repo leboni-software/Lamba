@@ -7,17 +7,25 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{CAF73567-72A
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{1A1724E7-93C6-4EFC-A08B-86957F7FCFC8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lamba.Cache", "src\Lamba.Cache\Lamba.Cache.csproj", "{4911CE10-D710-4C8D-92C6-20FB2A1EC7D7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lamba.Cache", "src\Lamba.Cache\Lamba.Cache.csproj", "{4911CE10-D710-4C8D-92C6-20FB2A1EC7D7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lamba.HttpClient", "src\Lamba.HttpClient\Lamba.HttpClient.csproj", "{EDC16EBB-976A-4764-9752-811509391F74}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lamba.HttpClient", "src\Lamba.HttpClient\Lamba.HttpClient.csproj", "{EDC16EBB-976A-4764-9752-811509391F74}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lamba.Domain", "src\Lamba.Domain\Lamba.Domain.csproj", "{8A96F3A7-571F-47CD-A862-6E8DD1B7016C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lamba.Domain", "src\Lamba.Domain\Lamba.Domain.csproj", "{8A96F3A7-571F-47CD-A862-6E8DD1B7016C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lamba.Infrastructure", "src\Lamba.Infrastructure\Lamba.Infrastructure.csproj", "{597D029E-3F0B-41AA-807A-A4EFE6B79FD2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lamba.Infrastructure", "src\Lamba.Infrastructure\Lamba.Infrastructure.csproj", "{597D029E-3F0B-41AA-807A-A4EFE6B79FD2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lamba.Repository", "src\Lamba.Repository\Lamba.Repository.csproj", "{779BC3DE-CD57-4620-A5E7-1E82E3B2947D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lamba.Repository", "src\Lamba.Repository\Lamba.Repository.csproj", "{779BC3DE-CD57-4620-A5E7-1E82E3B2947D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lamba.Security", "src\Lamba.Security\Lamba.Security.csproj", "{A73F4DD8-4A97-405C-941F-D99344143196}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lamba.Security", "src\Lamba.Security\Lamba.Security.csproj", "{A73F4DD8-4A97-405C-941F-D99344143196}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Identity", "Identity", "{A21125EC-23F6-420C-822A-01851C8B94B8}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lamba.Identity.Domain", "src\Identity\Lamba.Identity.Domain\Lamba.Identity.Domain.csproj", "{47896347-016E-4585-84C5-02AFE3E5F340}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lamba.Identity.Infrastructure", "src\Identity\Lamba.Identity.Infrastructure\Lamba.Identity.Infrastructure.csproj", "{6D796347-473B-46B4-8FE9-FB03F441A774}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lamba.Identity.Application", "src\Identity\Lamba.Identity.Application\Lamba.Identity.Application.csproj", "{BF90EC09-5A10-4E36-8E0D-766FFE76408B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -49,6 +57,18 @@ Global
 		{A73F4DD8-4A97-405C-941F-D99344143196}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A73F4DD8-4A97-405C-941F-D99344143196}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A73F4DD8-4A97-405C-941F-D99344143196}.Release|Any CPU.Build.0 = Release|Any CPU
+		{47896347-016E-4585-84C5-02AFE3E5F340}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{47896347-016E-4585-84C5-02AFE3E5F340}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{47896347-016E-4585-84C5-02AFE3E5F340}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{47896347-016E-4585-84C5-02AFE3E5F340}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6D796347-473B-46B4-8FE9-FB03F441A774}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6D796347-473B-46B4-8FE9-FB03F441A774}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6D796347-473B-46B4-8FE9-FB03F441A774}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6D796347-473B-46B4-8FE9-FB03F441A774}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BF90EC09-5A10-4E36-8E0D-766FFE76408B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF90EC09-5A10-4E36-8E0D-766FFE76408B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF90EC09-5A10-4E36-8E0D-766FFE76408B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF90EC09-5A10-4E36-8E0D-766FFE76408B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -60,6 +80,10 @@ Global
 		{597D029E-3F0B-41AA-807A-A4EFE6B79FD2} = {CAF73567-72A7-4980-B64D-EE08CB9FD2EA}
 		{779BC3DE-CD57-4620-A5E7-1E82E3B2947D} = {CAF73567-72A7-4980-B64D-EE08CB9FD2EA}
 		{A73F4DD8-4A97-405C-941F-D99344143196} = {CAF73567-72A7-4980-B64D-EE08CB9FD2EA}
+		{A21125EC-23F6-420C-822A-01851C8B94B8} = {CAF73567-72A7-4980-B64D-EE08CB9FD2EA}
+		{47896347-016E-4585-84C5-02AFE3E5F340} = {A21125EC-23F6-420C-822A-01851C8B94B8}
+		{6D796347-473B-46B4-8FE9-FB03F441A774} = {A21125EC-23F6-420C-822A-01851C8B94B8}
+		{BF90EC09-5A10-4E36-8E0D-766FFE76408B} = {A21125EC-23F6-420C-822A-01851C8B94B8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9124AE68-2609-4900-BE85-BD599FDD28CD}
