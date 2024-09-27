@@ -10,5 +10,11 @@ namespace Lamba.Identity.Infrastructure.Data.Contexts
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<Role> Roles { get; set; }
         public virtual DbSet<UserRole> UserRoles { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(IdentityReaderDbContext).Assembly);
+        }
     }
 }
