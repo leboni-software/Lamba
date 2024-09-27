@@ -6,5 +6,7 @@ namespace Lamba.Identity.Application.Infrastructure.Contexts
     public interface IIdentityDbContext
     {
         DbSet<User> Users { get; }
+        DbSet<Role> Roles { get; }
+        DbSet<UserRole> UserRoles { get; }
     }
 }
