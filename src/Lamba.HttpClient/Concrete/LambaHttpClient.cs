@@ -18,25 +18,25 @@ namespace Lamba.HttpClient.Concrete
             CancellationToken cancellationToken = default)
             where TRequest : class, new()
             where TResponse : class, new()
-        {
-            using var client = _httpClientFactory.CreateClient();
-            if (queryParams is not null && queryParams.Count > 0)
-            {
-                url = $"{url}?{string.Join("&", queryParams.Select(param => $"{param.Key}={Uri.EscapeDataString(param.Value)}"))}";
-            }
-            using var request = new HttpRequestMessage(httpMethod, url);
-            if (requestBody is not null)
-                request.Content = new StringContent(JsonSerializer.Serialize(requestBody), Encoding.UTF8, MediaTypeNames.Application.Json);
-
-            if (headers is not null && headers.Count > 0)
-            {
-                foreach (var header in headers)
-                {
-                    request.Headers.Add(header.Key, header.Value);
-                }
-            }
+        {            
             try
             {
+                using var client = _httpClientFactory.CreateClient();
+                if (queryParams is not null && queryParams.Count > 0)
+                {
+                    url = $"{url}?{string.Join("&", queryParams.Select(param => $"{param.Key}={Uri.EscapeDataString(param.Value)}"))}";
+                }
+                using var request = new HttpRequestMessage(httpMethod, url);
+                if (requestBody is not null)
+                    request.Content = new StringContent(JsonSerializer.Serialize(requestBody), Encoding.UTF8, MediaTypeNames.Application.Json);
+
+                if (headers is not null && headers.Count > 0)
+                {
+                    foreach (var header in headers)
+                    {
+                        request.Headers.Add(header.Key, header.Value);
+                    }
+                }
                 var response = await client.SendAsync(request, cancellationToken);
                 response.EnsureSuccessStatusCode();
                 var content = await response.Content.ReadAsStringAsync(cancellationToken);
@@ -62,25 +62,25 @@ namespace Lamba.HttpClient.Concrete
             CancellationToken cancellationToken = default)
             where TRequest : class, new()
             where TResponse : class, new()
-        {
-            using var client = _httpClientFactory.CreateClient(clientName);
-            if (queryParams is not null && queryParams.Count > 0)
-            {
-                url = $"{url}?{string.Join("&", queryParams.Select(param => $"{param.Key}={Uri.EscapeDataString(param.Value)}"))}";
-            }
-            using var request = new HttpRequestMessage(httpMethod, url);
-            if (requestBody is not null)
-                request.Content = new StringContent(JsonSerializer.Serialize(requestBody), Encoding.UTF8, MediaTypeNames.Application.Json);
-
-            if (headers is not null && headers.Count > 0)
-            {
-                foreach (var header in headers)
-                {
-                    request.Headers.TryAddWithoutValidation(header.Key, header.Value);
-                }
-            }
+        {            
             try
             {
+                using var client = _httpClientFactory.CreateClient(clientName);
+                if (queryParams is not null && queryParams.Count > 0)
+                {
+                    url = $"{url}?{string.Join("&", queryParams.Select(param => $"{param.Key}={Uri.EscapeDataString(param.Value)}"))}";
+                }
+                using var request = new HttpRequestMessage(httpMethod, url);
+                if (requestBody is not null)
+                    request.Content = new StringContent(JsonSerializer.Serialize(requestBody), Encoding.UTF8, MediaTypeNames.Application.Json);
+
+                if (headers is not null && headers.Count > 0)
+                {
+                    foreach (var header in headers)
+                    {
+                        request.Headers.TryAddWithoutValidation(header.Key, header.Value);
+                    }
+                }
                 var response = await client.SendAsync(request, cancellationToken);
                 response.EnsureSuccessStatusCode();
                 var content = await response.Content.ReadAsStringAsync(cancellationToken);
