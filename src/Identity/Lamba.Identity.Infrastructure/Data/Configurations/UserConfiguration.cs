@@ -15,6 +15,10 @@ namespace Lamba.Identity.Infrastructure.Data.Configurations
             builder.Property(x => x.Email).HasMaxLength(256).IsRequired();
             builder.Property(x => x.Password).HasMaxLength(256).IsRequired();
             builder.Property(x => x.PasswordSalt).HasMaxLength(256).IsRequired();
+
+            builder.HasMany(x => x.UserRoles)
+                .WithOne(x => x.User)
+                .IsRequired();
         }
     }
 }

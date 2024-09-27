@@ -13,11 +13,6 @@ namespace Lamba.Infrastructure.Data.Configurations
             builder.Property(x => x.UpdatedAt).IsRequired(false);
             builder.Property(x => x.DeletedAt).IsRequired(false);
             builder.HasQueryFilter(x => x.DeletedAt == null);
-            builder.HasIndex(x => new
-            {
-                x.Id,
-                x.DeletedAt
-            });
         }
     }
 }
