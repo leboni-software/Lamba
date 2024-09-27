@@ -15,7 +15,7 @@ namespace Lamba.Identity.Infrastructure.Data.Configurations
         {
             base.Configure(builder);
             builder.Property(x => x.Name).HasMaxLength(64).IsRequired();
-            builder.Property(x => x.IsSuperUser).IsRequired();
+            builder.Property(x => x.IsMasterRole).IsRequired();
 
             builder.HasMany(x => x.UserRoles)
                 .WithOne(x => x.Role)
