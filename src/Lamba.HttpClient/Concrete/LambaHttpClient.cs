@@ -18,7 +18,7 @@ namespace Lamba.HttpClient.Concrete
             CancellationToken cancellationToken = default)
             where TRequest : class, new()
             where TResponse : class, new()
-        {            
+        {
             try
             {
                 using var client = _httpClientFactory.CreateClient();
@@ -62,7 +62,7 @@ namespace Lamba.HttpClient.Concrete
             CancellationToken cancellationToken = default)
             where TRequest : class, new()
             where TResponse : class, new()
-        {            
+        {
             try
             {
                 using var client = _httpClientFactory.CreateClient(clientName);
