@@ -8,7 +8,7 @@ var isDevelopmentEnv = builder.Environment.IsDevelopment() || builder.Environmen
 // Add services to the container.
 builder.Services.AddLambaIdentityInfrastructureServices(builder.Configuration, isDevelopmentEnv);
 builder.Services.AddLambaIdentityApplicationServices(builder.Configuration);
-builder.Services.AddLambaSwaggerGenWithAuthServices("v1", "Lamba Identity Api");
+builder.Services.AddLambaSwaggerGenWithAuthServices("v1", $"Lamba {builder.Environment.EnvironmentName} Identity Api");
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 
