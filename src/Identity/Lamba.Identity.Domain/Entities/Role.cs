@@ -6,6 +6,7 @@ namespace Lamba.Identity.Domain.Entities
     {
         public virtual required string Name { get; set; }
         public virtual required bool IsMasterRole { get; set; }
-        public virtual required ICollection<UserRole> UserRoles { get; set; }
+        public virtual required bool IsDefaultRole { get; set; }
+        public virtual ICollection<UserRole> UserRoles { get; set; } = null!;
     }
 }

@@ -6,7 +6,7 @@ namespace Lamba.Identity.Domain.Entities
     {
         public virtual Guid UserId { get; set; }
         public virtual Guid RoleId { get; set; }
-        public virtual required User User { get; set; }
-        public virtual required Role Role { get; set; }
+        public virtual User User { get; set; } = null!;
+        public virtual Role Role { get; set; } = null!;
     }
 }

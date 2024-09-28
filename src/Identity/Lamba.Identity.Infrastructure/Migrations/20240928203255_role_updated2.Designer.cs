@@ -3,6 +3,7 @@ using System;
 using Lamba.Identity.Infrastructure.Data.Contexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Lamba.Identity.Infrastructure.Migrations
 {
     [DbContext(typeof(IdentityWriterDbContext))]
-    partial class IdentityWriterDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240928203255_role_updated2")]
+    partial class role_updated2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -124,10 +127,6 @@ namespace Lamba.Identity.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Username")
-                        .IsUnique()
-                        .HasFilter("\"DeletedAt\" IS NULL");
-
                     b.ToTable("Users");
                 });
 
@@ -159,9 +158,7 @@ namespace Lamba.Identity.Infrastructure.Migrations
 
                     b.HasIndex("RoleId");
 
-                    b.HasIndex("UserId", "RoleId")
-                        .IsUnique()
-                        .HasFilter("\"DeletedAt\" IS NULL");
+                    b.HasIndex("UserId");
 
                     b.ToTable("UserRoles");
                 });
