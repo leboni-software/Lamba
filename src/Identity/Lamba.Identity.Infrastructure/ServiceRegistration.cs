@@ -4,6 +4,8 @@ using Lamba.Identity.Infrastructure.Data.Contexts;
 using Lamba.Identity.Infrastructure.Data.Repositories.Readers;
 using Lamba.Identity.Infrastructure.Data.Repositories.Writers;
 using Lamba.Repository;
+using Lamba.Repository.Abstract;
+using Lamba.Repository.Concrete;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -30,6 +32,8 @@ namespace Lamba.Identity.Infrastructure
             });
             services.AddScoped<IUserReaderRepository, UserReaderRepository>();
             services.AddScoped<IUserWriterRepository, UserWriterRepository>();
+            services.AddScoped<IRoleReaderRepository, RoleReaderRepository>();
+            services.AddScoped<IRoleWriterRepository, RoleWriterRepository>();
         }
     }
 }
