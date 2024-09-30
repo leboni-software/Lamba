@@ -6,10 +6,11 @@ using System.Linq.Expressions;
 
 namespace Lamba.Repository.Concrete
 {
-    public class BaseReaderRepository<TEntity, TKey>(BaseReaderDbContext dbContext)
-        : BaseRepository<TEntity, TKey, BaseReaderDbContext>(dbContext), IReaderRepository<TEntity, TKey>
+    public class BaseReaderRepository<TEntity, TKey, TContext>(TContext dbContext)
+        : BaseRepository<TEntity, TKey, TContext>(dbContext), IReaderRepository<TEntity, TKey>
         where TEntity : BaseEntity<TKey>
         where TKey : struct
+        where TContext : BaseReaderDbContext<TContext>
     {
         public virtual async Task<TEntity?> GetAsync(TKey id, CancellationToken cancellationToken)
         {

@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Storage;
 namespace Lamba.Repository.Concrete
 {
     public class UnitOfWork<TContext> : IUnitOfWork, IDisposable
-        where TContext : BaseWriterDbContext
+        where TContext : BaseWriterDbContext<TContext>
     {
         private bool _disposed = false;
         private readonly TContext _writerDbContext;

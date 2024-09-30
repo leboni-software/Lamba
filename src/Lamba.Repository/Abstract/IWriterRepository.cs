@@ -1,12 +1,11 @@
 ﻿using Lamba.Domain.Concrete;
-using Lamba.Infrastructure.Data.Contexts;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.EntityFrameworkCore.Query;
 using System.Linq.Expressions;
 
 namespace Lamba.Repository.Abstract
 {
-    public interface IWriterRepository<TEntity, TKey> : IRepository<TEntity, TKey, BaseWriterDbContext>
+    public interface IWriterRepository<TEntity, TKey> : IRepository<TEntity, TKey>
         where TEntity : BaseEntity<TKey>
         where TKey : struct
     {

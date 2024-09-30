@@ -5,7 +5,7 @@ using Lamba.Repository.Concrete;
 
 namespace Lamba.Identity.Infrastructure.Data.Repositories.Readers
 {
-    public class UserReaderRepository(IdentityReaderDbContext dbContext) : BaseReaderRepository<User, Guid>(dbContext), IUserReaderRepository
+    public class UserReaderRepository(IdentityReaderDbContext dbContext) : BaseReaderRepository<User, Guid, IdentityReaderDbContext>(dbContext), IUserReaderRepository
     {
     }
 }
