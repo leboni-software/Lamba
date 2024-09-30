@@ -16,7 +16,7 @@ namespace Lamba.Identity.Infrastructure.Data.Configurations
             builder.Property(x => x.IsDefaultRole).HasDefaultValue(false).IsRequired();
 
             builder.HasIndex(x => x.IsMasterRole)
-                .IsUnique()                
+                .IsUnique()
                 .HasFilter($"\"{nameof(Role.IsMasterRole)}\" = true AND {NpgsqlEntityConfigurationConstant.DeletedFilter}");
             builder.HasIndex(x => x.IsDefaultRole)
                 .IsUnique()

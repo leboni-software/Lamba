@@ -2,15 +2,9 @@
 using Lamba.Identity.Application.Infrastructure.Repositories.Readers;
 using Lamba.Identity.Application.Infrastructure.Repositories.Writers;
 using Lamba.Identity.Domain.Entities;
-using Lamba.Repository.Abstract;
 using Lamba.Security.Abstract;
 using Lamba.Security.Common;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Lamba.Identity.Application.Features.Commands.Authentications
 {

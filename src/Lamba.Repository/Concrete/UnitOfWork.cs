@@ -4,12 +4,13 @@ using Microsoft.EntityFrameworkCore.Storage;
 
 namespace Lamba.Repository.Concrete
 {
-    public class UnitOfWork : IUnitOfWork, IDisposable
+    public class UnitOfWork<TContext> : IUnitOfWork, IDisposable
+        where TContext : BaseWriterDbContext
     {
         private bool _disposed = false;
-        private readonly BaseWriterDbContext _writerDbContext;
+        private readonly TContext _writerDbContext;
 
-        public UnitOfWork(BaseWriterDbContext writerDbContext)
+        public UnitOfWork(TContext writerDbContext)
         {
             _writerDbContext = writerDbContext;
         }
