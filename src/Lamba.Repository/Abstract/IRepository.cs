@@ -1,5 +1,4 @@
 ﻿using Lamba.Domain.Concrete;
-using Lamba.Infrastructure.Data.Contexts;
 
 namespace Lamba.Repository.Abstract
 {

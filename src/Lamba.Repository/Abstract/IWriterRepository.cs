@@ -1,5 +1,4 @@
 ﻿using Lamba.Domain.Concrete;
-using Lamba.Infrastructure.Data.Contexts;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.EntityFrameworkCore.Query;
 using System.Linq.Expressions;
