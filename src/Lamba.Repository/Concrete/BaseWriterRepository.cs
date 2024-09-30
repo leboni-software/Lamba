@@ -8,10 +8,11 @@ using System.Linq.Expressions;
 
 namespace Lamba.Repository.Concrete
 {
-    public class BaseWriterRepository<TEntity, TKey>(BaseWriterDbContext dbContext)
-        : BaseRepository<TEntity, TKey, BaseWriterDbContext>(dbContext), IWriterRepository<TEntity, TKey>
+    public class BaseWriterRepository<TEntity, TKey, TContext>(TContext dbContext)
+        : BaseRepository<TEntity, TKey, TContext>(dbContext), IWriterRepository<TEntity, TKey>
         where TEntity : BaseEntity<TKey>
         where TKey : struct
+       where TContext : BaseWriterDbContext<TContext>
     {
         public virtual async Task<int> ExecuteSqlRawAsync(string sql, CancellationToken cancellationToken)
         {

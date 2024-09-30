@@ -5,7 +5,7 @@ using Lamba.Repository.Concrete;
 
 namespace Lamba.Identity.Infrastructure.Data.Repositories.Writers
 {
-    public class UserWriterRepository(IdentityWriterDbContext dbContext) : BaseWriterRepository<User, Guid>(dbContext), IUserWriterRepository
+    public class UserWriterRepository(IdentityWriterDbContext dbContext) : BaseWriterRepository<User, Guid, IdentityWriterDbContext>(dbContext), IUserWriterRepository
     {
     }
 }

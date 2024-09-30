@@ -10,19 +10,19 @@ namespace Lamba.Infrastructure
         public static void AddLambaInfrastructureServices(this IServiceCollection services, IConfiguration configuration, bool isDevelopmentEnvironment)
         {
             AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
-            services.AddDbContext<BaseWriterDbContext>(opt =>
-            {
-                opt.EnableDetailedErrors(isDevelopmentEnvironment);
-                opt.EnableSensitiveDataLogging(isDevelopmentEnvironment);
-                opt.UseNpgsql(configuration.GetConnectionString("WriterConnectionString"), sql => sql.EnableRetryOnFailure(3));
-            });
-            services.AddDbContext<BaseReaderDbContext>(opt =>
-            {
-                opt.EnableDetailedErrors(isDevelopmentEnvironment);
-                opt.EnableSensitiveDataLogging(isDevelopmentEnvironment);
-                opt.UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
-                opt.UseNpgsql(configuration.GetConnectionString("ReaderConnectionString"), sql => sql.EnableRetryOnFailure(3));
-            });
+            //services.AddDbContext<BaseWriterDbContext>(opt =>
+            //{
+            //    opt.EnableDetailedErrors(isDevelopmentEnvironment);
+            //    opt.EnableSensitiveDataLogging(isDevelopmentEnvironment);
+            //    opt.UseNpgsql(configuration.GetConnectionString("WriterConnectionString"), sql => sql.EnableRetryOnFailure(3));
+            //});
+            //services.AddDbContext<BaseReaderDbContext>(opt =>
+            //{
+            //    opt.EnableDetailedErrors(isDevelopmentEnvironment);
+            //    opt.EnableSensitiveDataLogging(isDevelopmentEnvironment);
+            //    opt.UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
+            //    opt.UseNpgsql(configuration.GetConnectionString("ReaderConnectionString"), sql => sql.EnableRetryOnFailure(3));
+            //});
         }
     }
 }

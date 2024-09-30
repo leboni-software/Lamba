@@ -13,7 +13,7 @@ namespace Lamba.Repository
             services.AddLambaInfrastructureServices(configuration, isDevelopmentEnvironment);
             Assembly.GetCallingAssembly().GetTypes()
             .Where(t => t.IsClass && !t.IsAbstract)
-            .Where(t => t.GetInterfaces().Any(i => i.IsGenericType && i.GetGenericTypeDefinition() == typeof(IRepository<,,>)))
+            .Where(t => t.GetInterfaces().Any(i => i.IsGenericType && i.GetGenericTypeDefinition() == typeof(IRepository<,>)))
             .ToList()
             .ForEach(repository =>
             {

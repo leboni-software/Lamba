@@ -2,7 +2,8 @@
 
 namespace Lamba.Infrastructure.Data.Contexts
 {
-    public class BaseWriterDbContext(DbContextOptions<BaseWriterDbContext> options) : BaseDbContext<BaseWriterDbContext>(options)
+    public class BaseWriterDbContext<TContext>(DbContextOptions<TContext> options) : BaseDbContext<TContext>(options)
+        where TContext : BaseDbContext<TContext>
     {
     }
 }

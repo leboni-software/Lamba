@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Lamba.Repository.Concrete
 {
-    public class BaseRepository<TEntity, TKey, TDbContext> : IRepository<TEntity, TKey, TDbContext>
+    public class BaseRepository<TEntity, TKey, TDbContext> : IRepository<TEntity, TKey>
         where TEntity : BaseEntity<TKey>
         where TKey : struct
         where TDbContext : BaseDbContext<TDbContext>

@@ -4,7 +4,7 @@ using System.Linq.Expressions;
 
 namespace Lamba.Repository.Abstract
 {
-    public interface IReaderRepository<TEntity, TKey> : IRepository<TEntity, TKey, BaseReaderDbContext>
+    public interface IReaderRepository<TEntity, TKey> : IRepository<TEntity, TKey>
         where TEntity : BaseEntity<TKey>
         where TKey : struct
     {
