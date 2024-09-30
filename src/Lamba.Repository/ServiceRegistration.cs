@@ -1,6 +1,5 @@
 ﻿using Lamba.Infrastructure;
 using Lamba.Repository.Abstract;
-using Lamba.Repository.Concrete;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
@@ -28,13 +27,6 @@ namespace Lamba.Repository
             {
                 services.AddScoped(uow.GetInterfaces().Last(), uow);
             });
-
-
-
-            //services.AddScoped(typeof(IRepository<,,>), typeof(BaseRepository<,,>));
-            //services.AddScoped(typeof(IReaderRepository<,>), typeof(BaseReaderRepository<,>));
-            //services.AddScoped(typeof(IWriterRepository<,>), typeof(BaseWriterRepository<,>));
-            //services.AddScoped(typeof(IUnitOfWork), typeof(UnitOfWork<>));
         }
     }
 }
