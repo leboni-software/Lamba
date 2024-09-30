@@ -2,6 +2,7 @@
 using Lamba.Identity.Application.Infrastructure.Repositories.Writers;
 using Lamba.Identity.Infrastructure.Data.Contexts;
 using Lamba.Identity.Infrastructure.Data.Repositories.Readers;
+using Lamba.Identity.Infrastructure.Data.Repositories.UoW;
 using Lamba.Identity.Infrastructure.Data.Repositories.Writers;
 using Lamba.Repository;
 using Lamba.Repository.Abstract;
@@ -34,6 +35,7 @@ namespace Lamba.Identity.Infrastructure
             services.AddScoped<IUserWriterRepository, UserWriterRepository>();
             services.AddScoped<IRoleReaderRepository, RoleReaderRepository>();
             services.AddScoped<IRoleWriterRepository, RoleWriterRepository>();
+            services.AddScoped<IIdentityUnitOfWork, IdentityUnitOfWork>();
         }
     }
 }

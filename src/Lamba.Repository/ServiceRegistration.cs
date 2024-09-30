@@ -14,7 +14,7 @@ namespace Lamba.Repository
             services.AddScoped(typeof(IRepository<,,>), typeof(BaseRepository<,,>));
             services.AddScoped(typeof(IReaderRepository<,>), typeof(BaseReaderRepository<,>));
             services.AddScoped(typeof(IWriterRepository<,>), typeof(BaseWriterRepository<,>));
-            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped(typeof(IUnitOfWork), typeof(UnitOfWork<>));
         }
     }
 }
