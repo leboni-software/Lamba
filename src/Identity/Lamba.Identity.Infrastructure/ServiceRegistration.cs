@@ -31,11 +31,11 @@ namespace Lamba.Identity.Infrastructure
                 opt.UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
                 opt.UseNpgsql(configuration.GetConnectionString("ReaderConnectionString"), sql => sql.EnableRetryOnFailure(3));
             });
-            services.AddScoped<IUserReaderRepository, UserReaderRepository>();
-            services.AddScoped<IUserWriterRepository, UserWriterRepository>();
-            services.AddScoped<IRoleReaderRepository, RoleReaderRepository>();
-            services.AddScoped<IRoleWriterRepository, RoleWriterRepository>();
-            services.AddScoped<IIdentityUnitOfWork, IdentityUnitOfWork>();
+            //services.AddScoped<IUserReaderRepository, UserReaderRepository>();
+            //services.AddScoped<IUserWriterRepository, UserWriterRepository>();
+            //services.AddScoped<IRoleReaderRepository, RoleReaderRepository>();
+            //services.AddScoped<IRoleWriterRepository, RoleWriterRepository>();
+            //services.AddScoped<IIdentityUnitOfWork, IdentityUnitOfWork>();
         }
     }
 }
