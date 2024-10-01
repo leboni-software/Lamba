@@ -4,6 +4,6 @@ namespace Lamba.Security.Abstract
 {
     public interface ITokenProvider
     {
-        string CreateToken(IEnumerable<Claim>? claims = null);
+        string CreateToken(string username, string role);
     }
 }

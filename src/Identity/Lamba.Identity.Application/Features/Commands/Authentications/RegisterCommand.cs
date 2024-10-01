@@ -6,6 +6,8 @@ using Lamba.Identity.Domain.Entities;
 using Lamba.Security.Abstract;
 using Lamba.Security.Common;
 using MediatR;
+using Microsoft.IdentityModel.JsonWebTokens;
+using System.Security.Claims;
 
 namespace Lamba.Identity.Application.Features.Commands.Authentications
 {
@@ -52,7 +54,7 @@ namespace Lamba.Identity.Application.Features.Commands.Authentications
                 user.UserRoles.Add(new UserRole { User = user, RoleId = defaultRole.Id });
                 await _userWriterRepository.AddAsync(user, cancellationToken);
             }, cancellationToken);
-            var token = _tokenProvider.CreateToken();
+            var token = _tokenProvider.CreateToken(user.Username, defaultRole.Name);
             return new RegisterReponseDto { Token = token };
         }
     }
