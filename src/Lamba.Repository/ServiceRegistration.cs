@@ -21,7 +21,7 @@ namespace Lamba.Repository
             });
             Assembly.GetCallingAssembly().GetTypes()
             .Where(t => t.IsClass && !t.IsAbstract)
-            .Where(t => t.GetInterfaces().Any(i => i.IsGenericType && i.GetGenericTypeDefinition() == typeof(IUnitOfWork)))
+            .Where(t => t.GetInterfaces().Any(i => i == typeof(IUnitOfWork)))
             .ToList()
             .ForEach(uow =>
             {

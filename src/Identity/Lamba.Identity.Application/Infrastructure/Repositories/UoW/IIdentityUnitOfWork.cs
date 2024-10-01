@@ -1,6 +1,6 @@
 ﻿using Lamba.Repository.Abstract;
 
-namespace Lamba.Identity.Infrastructure.Data.Repositories.UoW
+namespace Lamba.Identity.Application.Infrastructure.Repositories.UoW
 {
     public interface IIdentityUnitOfWork : IUnitOfWork
     {
