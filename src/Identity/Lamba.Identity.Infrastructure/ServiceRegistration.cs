@@ -15,7 +15,7 @@ namespace Lamba.Identity.Infrastructure
             {
                 opt.EnableDetailedErrors(isDevelopmentEnvironment);
                 opt.EnableSensitiveDataLogging(isDevelopmentEnvironment);
-                opt.UseNpgsql(configuration.GetConnectionString("WriterConnectionString"), sql => sql.EnableRetryOnFailure(3));
+                opt.UseNpgsql(configuration.GetConnectionString("WriterConnectionString"), sql => sql.EnableRetryOnFailure(0));
             });
             services.AddDbContext<IdentityReaderDbContext>(opt =>
             {

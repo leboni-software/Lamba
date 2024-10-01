@@ -10,6 +10,6 @@ namespace Lamba.Identity.Domain.Entities
         public virtual required string Email { get; set; }
         public virtual required string Password { get; set; }
         public virtual required string PasswordSalt { get; set; }
-        public virtual ICollection<UserRole> UserRoles { get; set; } = null!;
+        public virtual ICollection<UserRole> UserRoles { get; set; } = [];
     }
 }
