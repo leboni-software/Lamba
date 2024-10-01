@@ -17,9 +17,9 @@ namespace Lamba.Repository.Concrete
 
         public async Task ExecuteTransactionAsync(Func<Task> action, CancellationToken cancellationToken)
         {
-            await using var transaction = await BeginTransactionAsync(cancellationToken);
             try
             {
+                await BeginTransactionAsync(cancellationToken);
                 await action();
                 await SaveChangesAsync(cancellationToken);
                 await CommitTransactionAsync(cancellationToken);
@@ -31,7 +31,7 @@ namespace Lamba.Repository.Concrete
             }
         }
 
-        public virtual Task<IDbContextTransaction> BeginTransactionAsync(CancellationToken cancellationToken)
+        public virtual Task BeginTransactionAsync(CancellationToken cancellationToken)
         {
             return _writerDbContext.Database.BeginTransactionAsync(cancellationToken);
         }
