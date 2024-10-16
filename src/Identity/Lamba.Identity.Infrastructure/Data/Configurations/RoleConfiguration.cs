@@ -28,6 +28,11 @@ namespace Lamba.Identity.Infrastructure.Data.Configurations
             builder.HasMany(x => x.UserRoles)
                 .WithOne(x => x.Role)
                 .IsRequired();
+
+            builder.HasMany(x => x.PermissionRoles)
+                .WithOne(x => x.Role)
+                .HasForeignKey(x => x.RoleId)
+                .IsRequired();
         }
     }
 }

@@ -1,6 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore.Storage;
-
-namespace Lamba.Repository.Abstract
+﻿namespace Lamba.Repository.Abstract
 {
     public interface IUnitOfWork
     {
