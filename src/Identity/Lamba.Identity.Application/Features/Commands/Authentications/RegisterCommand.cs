@@ -1,4 +1,5 @@
-﻿using Lamba.Identity.Application.Features.Commands.Authentications.Dto;
+﻿using Lamba.Identity.Application.Common.Handlers;
+using Lamba.Identity.Application.Features.Commands.Authentications.Dto;
 using Lamba.Identity.Application.Infrastructure.Repositories.Readers;
 using Lamba.Identity.Application.Infrastructure.Repositories.UoW;
 using Lamba.Identity.Application.Infrastructure.Repositories.Writers;
