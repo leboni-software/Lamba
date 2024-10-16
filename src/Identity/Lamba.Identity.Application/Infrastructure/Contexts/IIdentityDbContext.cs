@@ -8,5 +8,7 @@ namespace Lamba.Identity.Application.Infrastructure.Contexts
         DbSet<User> Users { get; }
         DbSet<Role> Roles { get; }
         DbSet<UserRole> UserRoles { get; }
+        DbSet<Permission> Permissions { get; }
+        DbSet<PermissionRole> PermissionRoles { get; }
     }
 }
