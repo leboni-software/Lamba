@@ -17,8 +17,4 @@
     <ProjectReference Include="..\Lamba.Identity.Domain\Lamba.Identity.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Features\Queries\" />
-  </ItemGroup>
-
 </Project>

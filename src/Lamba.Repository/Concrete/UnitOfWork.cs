@@ -1,6 +1,5 @@
 ﻿using Lamba.Infrastructure.Data.Contexts;
 using Lamba.Repository.Abstract;
-using Microsoft.EntityFrameworkCore.Storage;
 
 namespace Lamba.Repository.Concrete
 {

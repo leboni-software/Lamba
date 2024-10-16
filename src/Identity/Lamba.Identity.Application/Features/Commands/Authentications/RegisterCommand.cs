@@ -6,8 +6,6 @@ using Lamba.Identity.Domain.Entities;
 using Lamba.Security.Abstract;
 using Lamba.Security.Common;
 using MediatR;
-using Microsoft.IdentityModel.JsonWebTokens;
-using System.Security.Claims;
 
 namespace Lamba.Identity.Application.Features.Commands.Authentications
 {
