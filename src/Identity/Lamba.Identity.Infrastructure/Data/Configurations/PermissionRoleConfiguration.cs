@@ -3,11 +3,6 @@ using Lamba.Infrastructure.Data.Configurations;
 using Lamba.Infrastructure.Data.Configurations.Constants;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Lamba.Identity.Infrastructure.Data.Configurations
 {

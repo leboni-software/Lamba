@@ -3,11 +3,6 @@ using Lamba.Identity.Application.Features.Queries.Users.Dto;
 using Lamba.Identity.Application.Infrastructure.Repositories.Readers;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Lamba.Identity.Application.Features.Queries.Users
 {

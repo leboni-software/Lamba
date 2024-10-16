@@ -1,5 +1,4 @@
-﻿using Lamba.Identity.Application.Common.Handlers;
-using Lamba.Identity.Application.Features.Commands.Authentications.Dto;
+﻿using Lamba.Identity.Application.Features.Commands.Authentications.Dto;
 using Lamba.Identity.Application.Infrastructure.Repositories.Readers;
 using Lamba.Identity.Application.Infrastructure.Repositories.UoW;
 using Lamba.Identity.Application.Infrastructure.Repositories.Writers;
@@ -7,8 +6,6 @@ using Lamba.Identity.Domain.Entities;
 using Lamba.Security.Abstract;
 using Lamba.Security.Common;
 using MediatR;
-using Microsoft.IdentityModel.JsonWebTokens;
-using System.Security.Claims;
 
 namespace Lamba.Identity.Application.Features.Commands.Authentications
 {
