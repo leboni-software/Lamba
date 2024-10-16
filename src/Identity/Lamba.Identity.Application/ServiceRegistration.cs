@@ -1,4 +1,6 @@
-﻿using Lamba.Security;
+﻿using Lamba.Identity.Application.Behaviours;
+using Lamba.Security;
+using MediatR;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
@@ -14,6 +16,7 @@ namespace Lamba.Identity.Application
             {
                 conf.RegisterServicesFromAssemblies(Assembly.GetExecutingAssembly());
             });
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(AuthorizePipelineBehaviour<,>));
         }
     }
 }
