@@ -1,5 +1,6 @@
 using Lamba.Identity.Application;
 using Lamba.Identity.Infrastructure;
+using Lamba.Identity.Infrastructure.Data;
 using Lamba.Security;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -22,6 +23,8 @@ if (app.Environment.IsDevelopment() || app.Environment.IsEnvironment("Local"))
     app.UseSwaggerUI();
     app.UseDeveloperExceptionPage();
 }
+
+app.InitializeDatabase();
 
 app.UseHttpsRedirection();
 
