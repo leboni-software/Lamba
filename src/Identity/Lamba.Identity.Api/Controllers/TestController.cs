@@ -25,7 +25,7 @@ namespace Lamba.Identity.Api.Controllers
             {
                 FirstName = "Test",
                 LastName = "Test",
-                Username = "Test",
+                Username = Guid.NewGuid().ToString(),
                 Email = "Test",
                 Password = "Test"
             }, cancellationToken);
@@ -36,10 +36,7 @@ namespace Lamba.Identity.Api.Controllers
         [Authorize]
         public async Task<IActionResult> Users(CancellationToken cancellationToken)
         {
-            var result = await _mediator.Send(new GetUserQuery
-            {
-                Roles = User.Claims.Where(x => x.Type == LambaSecurityConstants.RoleClaim).Select(x => x.Value).ToList(),
-            }, cancellationToken);
+            var result = await _mediator.Send(new GetUserQuery(), cancellationToken);
             return Ok(result);
         }
     }

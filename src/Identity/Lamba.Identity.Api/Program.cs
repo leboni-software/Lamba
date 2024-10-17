@@ -11,6 +11,7 @@ builder.Services.AddLambaIdentityApplicationServices(builder.Configuration);
 builder.Services.AddLambaSwaggerGenWithAuthServices("v1", $"Lamba {builder.Environment.EnvironmentName} Identity Api");
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddHttpContextAccessor();
 
 var app = builder.Build();
 

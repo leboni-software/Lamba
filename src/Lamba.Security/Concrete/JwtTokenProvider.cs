@@ -19,8 +19,8 @@ namespace Lamba.Security.Concrete
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity([
-                    new Claim(JwtRegisteredClaimNames.UniqueName, username),
-                    new Claim("role", role)]),
+                    new Claim(LambaSecurityConstants.UsernameClaim, username),
+                    new Claim(LambaSecurityConstants.RoleClaim, role)]),
                 Expires = DateTime.UtcNow.AddMinutes(_tokenOptions.ExpirationInMinutes),
                 SigningCredentials = credentials,
                 Issuer = _tokenOptions.Issuer,
