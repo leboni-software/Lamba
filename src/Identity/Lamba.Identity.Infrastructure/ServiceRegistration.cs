@@ -1,4 +1,5 @@
-﻿using Lamba.Identity.Infrastructure.Data.Contexts;
+﻿using Lamba.Identity.Infrastructure.Data;
+using Lamba.Identity.Infrastructure.Data.Contexts;
 using Lamba.Repository;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -11,6 +12,7 @@ namespace Lamba.Identity.Infrastructure
         public static void AddLambaIdentityInfrastructureServices(this IServiceCollection services, IConfiguration configuration, bool isDevelopmentEnvironment)
         {
             services.AddLambaRepositoryServices(configuration, isDevelopmentEnvironment);
+            services.AddTransient<IdentityDbContextInitializer>();
             services.AddDbContext<IdentityWriterDbContext>(opt =>
             {
                 opt.EnableDetailedErrors(isDevelopmentEnvironment);
