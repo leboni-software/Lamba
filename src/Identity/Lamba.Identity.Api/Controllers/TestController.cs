@@ -1,6 +1,5 @@
 ﻿using Lamba.Identity.Application.Features.Commands.Authentications;
 using Lamba.Identity.Application.Features.Queries.Users;
-using Lamba.Security.Common;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;

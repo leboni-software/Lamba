@@ -1,5 +1,4 @@
 ﻿using MediatR;
-using System.Security.Claims;
 
 namespace Lamba.Identity.Application.Common.Handlers
 {
