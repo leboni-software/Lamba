@@ -2,6 +2,8 @@
 {
     public class BaseAuthorizeRequest<TResponse> : IAuthorizeRequest<TResponse>
     {
-        public required List<string> Roles { get; set; }
+    }
+    public class BaseAuthorizeRequest : IAuthorizeRequest
+    {
     }
 }
