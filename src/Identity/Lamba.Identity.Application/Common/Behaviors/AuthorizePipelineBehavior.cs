@@ -9,7 +9,7 @@ using Microsoft.Extensions.Logging;
 
 namespace Lamba.Identity.Application.Common.Behaviours
 {
-    public class AuthorizePipelineBehaviour<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
+    public class AuthorizePipelineBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
         where TRequest : BaseAuthorizeRequest<TResponse>
     {
         private readonly ILogger<TRequest> _logger;
@@ -17,7 +17,7 @@ namespace Lamba.Identity.Application.Common.Behaviours
         private readonly IRoleReaderRepository _roleReaderRepository;
         private readonly IHttpContextAccessor _contextAccessor;
 
-        public AuthorizePipelineBehaviour(ILogger<TRequest> logger, ITokenProvider tokenProvider, IRoleReaderRepository roleReaderRepository, IHttpContextAccessor contextAccessor)
+        public AuthorizePipelineBehavior(ILogger<TRequest> logger, ITokenProvider tokenProvider, IRoleReaderRepository roleReaderRepository, IHttpContextAccessor contextAccessor)
         {
             _logger = logger;
             _tokenProvider = tokenProvider;

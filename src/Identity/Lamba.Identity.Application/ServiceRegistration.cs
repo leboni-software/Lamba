@@ -16,7 +16,7 @@ namespace Lamba.Identity.Application
             {
                 conf.RegisterServicesFromAssemblies(Assembly.GetExecutingAssembly());
             });
-            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(AuthorizePipelineBehaviour<,>));
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(AuthorizePipelineBehavior<,>));
         }
     }
 }
