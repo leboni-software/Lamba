@@ -9,7 +9,7 @@ using MediatR;
 
 namespace Lamba.Identity.Application.Features.Commands.Authentications
 {
-    public record RegisterCommand : IRequest<RegisterReponseDto>
+    public record RegisterCommand : IRequest<RegisterResponseDto>
     {
         public required string FirstName { get; set; }
         public required string LastName { get; set; }
@@ -18,7 +18,7 @@ namespace Lamba.Identity.Application.Features.Commands.Authentications
         public required string Password { get; set; }
     }
 
-    public class RegisterCommandHandler : IRequestHandler<RegisterCommand, RegisterReponseDto>
+    public class RegisterCommandHandler : IRequestHandler<RegisterCommand, RegisterResponseDto>
     {
         private readonly ITokenProvider _tokenProvider;
         private readonly IUserWriterRepository _userWriterRepository;
@@ -33,7 +33,7 @@ namespace Lamba.Identity.Application.Features.Commands.Authentications
             _identityUnitOfWork = identityUnitOfWork;
         }
 
-        public async Task<RegisterReponseDto> Handle(RegisterCommand request, CancellationToken cancellationToken)
+        public async Task<RegisterResponseDto> Handle(RegisterCommand request, CancellationToken cancellationToken)
         {
             var passwordSalt = HashHelper.GenerateSalt();
             var user = new User
@@ -53,7 +53,7 @@ namespace Lamba.Identity.Application.Features.Commands.Authentications
                 await _userWriterRepository.AddAsync(user, cancellationToken);
             }, cancellationToken);
             var token = _tokenProvider.CreateToken(user.Username, defaultRole.Name);
-            return new RegisterReponseDto { Token = token };
+            return new RegisterResponseDto { Token = token };
         }
     }
 }

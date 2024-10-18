@@ -1,6 +1,6 @@
 ﻿namespace Lamba.Identity.Application.Features.Commands.Authentications.Dto
 {
-    public class RegisterReponseDto
+    public class RegisterResponseDto
     {
         public required string Token { get; set; }
     }
