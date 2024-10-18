@@ -1,3 +1,4 @@
+using Lamba.Identity.Api.Filters;
 using Lamba.Identity.Application;
 using Lamba.Identity.Infrastructure;
 using Lamba.Identity.Infrastructure.Data;
@@ -10,7 +11,10 @@ var isDevelopmentEnv = builder.Environment.IsDevelopment() || builder.Environmen
 builder.Services.AddLambaIdentityInfrastructureServices(builder.Configuration, isDevelopmentEnv);
 builder.Services.AddLambaIdentityApplicationServices(builder.Configuration);
 builder.Services.AddLambaSwaggerGenWithAuthServices("v1", $"Lamba {builder.Environment.EnvironmentName} Identity Api");
-builder.Services.AddControllers();
+builder.Services.AddControllers(opt =>
+{
+    opt.Filters.Add<ExceptionFilter>();
+});
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddHttpContextAccessor();
 
