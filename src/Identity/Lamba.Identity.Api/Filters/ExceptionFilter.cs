@@ -10,12 +10,12 @@ namespace Lamba.Identity.Api.Filters
         public Task OnExceptionAsync(ExceptionContext context)
         {
             var statusCode = context.Exception switch
-            {      
-                UnauthorizedAccessException => HttpStatusCode.Unauthorized,   
-                KeyNotFoundException => HttpStatusCode.NotFound,              
+            {
+                UnauthorizedAccessException => HttpStatusCode.Unauthorized,
+                KeyNotFoundException => HttpStatusCode.NotFound,
                 InvalidOperationException => HttpStatusCode.Forbidden,
                 Exception => HttpStatusCode.BadRequest,
-                _ => HttpStatusCode.InternalServerError                       
+                _ => HttpStatusCode.InternalServerError
             };
             var resultValue = (context.Result as ObjectResult)?.Value;
             context.Result = new ObjectResult(
