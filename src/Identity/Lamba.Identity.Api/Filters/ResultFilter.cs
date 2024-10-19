@@ -12,9 +12,9 @@ namespace Lamba.Identity.Api.Filters
             if (executedContext.Result is ObjectResult objectResult && objectResult.Value is not Result)
             {
                 if (objectResult.Value is null)
-                    executedContext.Result = new OkObjectResult(new SuccessResult("Operation completed successfully!"));
+                    executedContext.Result = new OkObjectResult(new SuccessResult());
                 else
-                    executedContext.Result = new OkObjectResult(new SuccessResult<object>(objectResult.Value, "Operation completed successfully!"));
+                    executedContext.Result = new OkObjectResult(new SuccessResult<object>(objectResult.Value));
             }
         }
     }

@@ -1,4 +1,5 @@
-﻿using Lamba.Identity.Application.Features.Commands.Authentications.Dto;
+﻿using Lamba.Identity.Application.Common.Constants;
+using Lamba.Identity.Application.Features.Commands.Authentications.Dto;
 using Lamba.Identity.Application.Infrastructure.Repositories.Readers;
 using Lamba.Identity.Application.Infrastructure.Repositories.UoW;
 using Lamba.Identity.Application.Infrastructure.Repositories.Writers;
@@ -46,7 +47,7 @@ namespace Lamba.Identity.Application.Features.Commands.Authentications
                 Password = HashHelper.ComputeHash(request.Password, passwordSalt)
             };
             var defaultRole = await _roleReaderRepository.GetAsync(x => x.IsDefaultRole, cancellationToken);
-            if (defaultRole is null) throw new Exception("The default role was not found!");
+            if (defaultRole is null) throw new Exception(AuthenticationMessages.DefaultRoleNotFound);
             await _identityUnitOfWork.ExecuteTransactionAsync(async () =>
             {
                 user.UserRoles.Add(new UserRole { User = user, RoleId = defaultRole.Id });
