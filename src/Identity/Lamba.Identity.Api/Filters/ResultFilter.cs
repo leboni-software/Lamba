@@ -11,10 +11,11 @@ namespace Lamba.Identity.Api.Filters
             var executedContext = await next();
             if (executedContext.Result is ObjectResult objectResult && objectResult.Value is not Result)
             {
-                if (objectResult.Value is null)
-                    executedContext.Result = new OkObjectResult(new SuccessResult());
-                else
-                    executedContext.Result = new OkObjectResult(new SuccessResult<object>(objectResult.Value));
+                executedContext.Result = new OkObjectResult(
+                    objectResult.Value is null
+                    ? new SuccessResult()
+                    : new SuccessResult<object>(objectResult.Value)
+                );
             }
         }
     }
