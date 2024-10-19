@@ -14,6 +14,7 @@ builder.Services.AddLambaSwaggerGenWithAuthServices("v1", $"Lamba {builder.Envir
 builder.Services.AddControllers(opt =>
 {
     opt.Filters.Add<ExceptionFilter>();
+    opt.Filters.Add<ResultFilter>();
 });
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddHttpContextAccessor();

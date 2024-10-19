@@ -1,5 +1,4 @@
-﻿using Lamba.Common.Models.Results;
-using Lamba.Identity.Application.Features.Commands.Authentications;
+﻿using Lamba.Identity.Application.Features.Commands.Authentications;
 using Lamba.Identity.Application.Features.Commands.Authentications.Dto;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -16,17 +15,15 @@ namespace Lamba.Identity.Api.Controllers
         }
 
         [HttpPost]
-        public async Task<Result<RegisterResponseDto>> Register(RegisterCommand register, CancellationToken cancellationToken)
+        public async Task<RegisterResponseDto> Register(RegisterCommand register, CancellationToken cancellationToken)
         {
-            var result = await _mediator.Send(register, cancellationToken);
-            return new SuccessResult<RegisterResponseDto>(result, "Registered successfully!");
+            return await _mediator.Send(register, cancellationToken);
         }
 
         [HttpPost]
-        public async Task<Result<LoginResponseDto>> Login(LoginCommand login, CancellationToken cancellationToken)
+        public async Task<LoginResponseDto> Login(LoginCommand login, CancellationToken cancellationToken)
         {
-            var result = await _mediator.Send(login, cancellationToken);
-            return new SuccessResult<LoginResponseDto>(result, "Logged in successfully!");
+            return await _mediator.Send(login, cancellationToken);
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using Lamba.Identity.Application.Features.Commands.Authentications.Dto;
+﻿using Lamba.Identity.Application.Common.Constants;
+using Lamba.Identity.Application.Features.Commands.Authentications.Dto;
 using Lamba.Identity.Application.Infrastructure.Repositories.Readers;
 using Lamba.Security.Abstract;
 using Lamba.Security.Common;
@@ -31,9 +32,9 @@ namespace Lamba.Identity.Application.Features.Commands.Authentications
                 .ThenInclude(x => x.Role)
                 .Where(x => x.Username == request.Username)
                 .FirstOrDefaultAsync(cancellationToken)
-                ?? throw new Exception("Incorrect username!");
+                ?? throw new Exception(AuthenticationMessages.IncorrectUsername);
             if (user.Password != HashHelper.ComputeHash(request.Password, user.PasswordSalt))
-                throw new Exception("Incorrect password!");
+                throw new Exception(AuthenticationMessages.IncorrectPassword);
             var token = _tokenProvider.CreateToken(user.Username, string.Join(",", user.UserRoles.Select(x => x.Role.Name)));
             return new LoginResponseDto { Token = token };
         }
