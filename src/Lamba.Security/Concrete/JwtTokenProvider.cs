@@ -12,13 +12,14 @@ namespace Lamba.Security.Concrete
     {
         private readonly TokenOptions _tokenOptions = options.Value;
 
-        public virtual string CreateToken(string username, string role)
+        public virtual string CreateToken(Guid id, string username, string role)
         {
             var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_tokenOptions.SecretKey));
             var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity([
+                    new Claim(LambaSecurityConstants.IdentifierClaim, id.ToString()),
                     new Claim(LambaSecurityConstants.UsernameClaim, username),
                     new Claim(LambaSecurityConstants.RoleClaim, role)]),
                 Expires = DateTime.UtcNow.AddMinutes(_tokenOptions.ExpirationInMinutes),

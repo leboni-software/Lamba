@@ -7,10 +7,10 @@ namespace Lamba.Repository.Abstract
         where TEntity : BaseEntity<TKey>
         where TKey : struct
     {
-        Task<TEntity?> GetAsync(TKey id, CancellationToken cancellationToken);
-        Task<bool> AnyAsync(Expression<Func<TEntity, bool>> predicate, CancellationToken cancellationToken);
-        Task<TEntity?> GetAsync(Expression<Func<TEntity, bool>> predicate, CancellationToken cancellationToken);
-        Task<List<TEntity>> GetListAsync(Expression<Func<TEntity, bool>> predicate, CancellationToken cancellationToken);
         IQueryable<TEntity> GetQueryable();
+        Task<TEntity?> GetAsync(TKey id, CancellationToken cancellationToken = default);
+        Task<TEntity?> GetAsync(Expression<Func<TEntity, bool>> predicate, CancellationToken cancellationToken = default);
+        Task<List<TEntity>> GetListAsync(Expression<Func<TEntity, bool>> predicate, CancellationToken cancellationToken = default);
+        Task<bool> AnyAsync(Expression<Func<TEntity, bool>> predicate, CancellationToken cancellationToken = default);
     }
 }

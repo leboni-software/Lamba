@@ -35,7 +35,7 @@ namespace Lamba.Identity.Application.Features.Commands.Authentications
                 ?? throw new Exception(AuthenticationMessages.IncorrectUsername);
             if (user.Password != HashHelper.ComputeHash(request.Password, user.PasswordSalt))
                 throw new Exception(AuthenticationMessages.IncorrectPassword);
-            var token = _tokenProvider.CreateToken(user.Username, string.Join(",", user.UserRoles.Select(x => x.Role.Name)));
+            var token = _tokenProvider.CreateToken(user.Id, user.Username, string.Join(",", user.UserRoles.Select(x => x.Role.Name)));
             return new LoginResponseDto { Token = token };
         }
     }

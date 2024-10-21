@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using System.Net;
 
-namespace Lamba.Identity.Api.Filters
+namespace Lamba.Common.Filters
 {
     public class ExceptionFilter : IAsyncExceptionFilter
     {

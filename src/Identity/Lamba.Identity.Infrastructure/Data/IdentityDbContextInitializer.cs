@@ -1,6 +1,5 @@
 ﻿using Lamba.Identity.Domain.Entities;
 using Lamba.Identity.Infrastructure.Data.Contexts;
-using Lamba.Security.Common;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
@@ -27,7 +26,7 @@ namespace Lamba.Identity.Infrastructure.Data
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "An error occurred while initialising the database.");
+                _logger.LogError(ex, "An error occurred while initializing the database.");
                 throw;
             }
         }
@@ -45,7 +44,7 @@ namespace Lamba.Identity.Infrastructure.Data
         }
         public void TrySeed()
         {
-            if (!_writerContext.Roles.Any() && !_writerContext.Users.Any())
+            if (!_writerContext.Roles.Any() && !_writerContext.Users.Any() && !_writerContext.Permissions.Any())
             {
                 var adminRole = new Role
                 {
@@ -54,16 +53,26 @@ namespace Lamba.Identity.Infrastructure.Data
                     IsMasterRole = true
                 };
                 _writerContext.Roles.Add(adminRole);
-                var salt = HashHelper.GenerateSalt();
-                var adminUser = new User
+                var permissions = new List<Permission>
                 {
-                    FirstName = "Alperen",
-                    LastName = "Kucukali",
-                    Email = "alperen.kucukali@hotmail.com",
-                    Username = "alperen.kucukali",
-                    Password = HashHelper.ComputeHash("9^Hc[3q,0l2<At^z@8", salt),
-                    PasswordSalt = salt
+                    new() { CommandName = "UpdateUserCommand" },
+                    new() { CommandName = "GetUserQuery" }
                 };
+                _writerContext.Permissions.AddRange(permissions);
+                foreach (var permission in permissions)
+                {
+                    _writerContext.PermissionRoles.Add(new PermissionRole
+                    {
+                        Role = adminRole,
+                        Permission = permission
+                    });
+                }
+                var adminUser = new User(
+                    "Alperen",
+                    "Kucukali",
+                    "alperen.kucukali",
+                    "alperen.kucukali@hotmail.com",
+                    "9^Hc[3q,0l2<At^z@8");
                 _writerContext.Users.Add(adminUser);
                 _writerContext.UserRoles.Add(new UserRole
                 {

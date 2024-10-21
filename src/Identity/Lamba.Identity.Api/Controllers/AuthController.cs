@@ -14,16 +14,29 @@ namespace Lamba.Identity.Api.Controllers
             _mediator = mediator;
         }
 
-        [HttpPost]
-        public async Task<RegisterResponseDto> Register(RegisterCommand register, CancellationToken cancellationToken)
+        [HttpPost("Register")]
+        public async Task<RegisterResponseDto> Register(RegisterRequestDto register, CancellationToken cancellationToken)
         {
-            return await _mediator.Send(register, cancellationToken);
+            var registerCommand = new RegisterCommand
+            {
+                FirstName = register.FirstName,
+                LastName = register.LastName,
+                Email = register.Email,
+                Username = register.Username,
+                Password = register.Password
+            };
+            return await _mediator.Send(registerCommand, cancellationToken);
         }
 
-        [HttpPost]
-        public async Task<LoginResponseDto> Login(LoginCommand login, CancellationToken cancellationToken)
+        [HttpPost("Login")]
+        public async Task<LoginResponseDto> Login(LoginRequestDto login, CancellationToken cancellationToken)
         {
-            return await _mediator.Send(login, cancellationToken);
+            var loginCommand = new LoginCommand
+            {
+                Username = login.Username,
+                Password = login.Password
+            };
+            return await _mediator.Send(loginCommand, cancellationToken);
         }
     }
 }
