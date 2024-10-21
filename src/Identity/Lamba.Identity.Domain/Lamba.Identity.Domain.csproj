@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Lamba.Domain\Lamba.Domain.csproj" />
+    <ProjectReference Include="..\..\Lamba.Security\Lamba.Security.csproj" />
   </ItemGroup>
 
 </Project>
