@@ -14,6 +14,11 @@ namespace Lamba.Repository.Concrete
         where TKey : struct
        where TContext : BaseWriterDbContext<TContext>
     {
+        public virtual EntityEntry<TEntity> Attach(TEntity entity)
+        {
+            return _dbContext.Attach(entity);
+        }
+
         public virtual async Task<int> ExecuteSqlRawAsync(string sql, CancellationToken cancellationToken)
         {
             return await _dbContext.Database.ExecuteSqlRawAsync(sql, cancellationToken);

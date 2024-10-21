@@ -14,7 +14,7 @@ namespace Lamba.Repository.Concrete
     {
         public virtual async Task<TEntity?> GetAsync(TKey id, CancellationToken cancellationToken)
         {
-            return await _dbSet.FindAsync(new { id }, cancellationToken);
+            return await _dbSet.FindAsync(keyValues: [id], cancellationToken);
         }
 
         public virtual async Task<bool> AnyAsync(Expression<Func<TEntity, bool>> predicate, CancellationToken cancellationToken)
