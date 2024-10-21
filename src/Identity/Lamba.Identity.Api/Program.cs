@@ -1,4 +1,4 @@
-using Lamba.Identity.Api.Filters;
+using Lamba.Common.Filters;
 using Lamba.Identity.Application;
 using Lamba.Identity.Infrastructure;
 using Lamba.Identity.Infrastructure.Data;
