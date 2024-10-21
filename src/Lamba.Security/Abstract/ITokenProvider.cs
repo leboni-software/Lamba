@@ -2,6 +2,6 @@
 {
     public interface ITokenProvider
     {
-        string CreateToken(string username, string role);
+        string CreateToken(Guid id, string username, string role);
     }
 }
