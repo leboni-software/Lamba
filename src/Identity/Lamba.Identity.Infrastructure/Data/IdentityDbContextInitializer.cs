@@ -44,7 +44,7 @@ namespace Lamba.Identity.Infrastructure.Data
         }
         public void TrySeed()
         {
-            if (!_writerContext.Roles.Any() && !_writerContext.Users.Any())
+            if (!_writerContext.Roles.Any() && !_writerContext.Users.Any() && !_writerContext.Permissions.Any())
             {
                 var adminRole = new Role
                 {
@@ -53,6 +53,20 @@ namespace Lamba.Identity.Infrastructure.Data
                     IsMasterRole = true
                 };
                 _writerContext.Roles.Add(adminRole);
+                var permissions = new List<Permission>
+                {
+                    new() { CommandName = "UpdateUserCommand" },
+                    new() { CommandName = "GetUserQuery" }
+                };
+                _writerContext.Permissions.AddRange(permissions);
+                foreach (var permission in permissions)
+                {
+                    _writerContext.PermissionRoles.Add(new PermissionRole
+                    {
+                        Role = adminRole,
+                        Permission = permission
+                    });
+                }
                 var adminUser = new User(
                     "Alperen",
                     "Kucukali",
