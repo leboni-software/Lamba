@@ -54,16 +54,12 @@ namespace Lamba.Identity.Infrastructure.Data
                     IsMasterRole = true
                 };
                 _writerContext.Roles.Add(adminRole);
-                var salt = HashHelper.GenerateSalt();
-                var adminUser = new User
-                {
-                    FirstName = "Alperen",
-                    LastName = "Kucukali",
-                    Email = "alperen.kucukali@hotmail.com",
-                    Username = "alperen.kucukali",
-                    Password = HashHelper.ComputeHash("9^Hc[3q,0l2<At^z@8", salt),
-                    PasswordSalt = salt
-                };
+                var adminUser = new User(
+                    "Alperen",
+                    "Kucukali",
+                    "alperen.kucukali",
+                    "alperen.kucukali@hotmail.com",
+                    "9^Hc[3q,0l2<At^z@8");
                 _writerContext.Users.Add(adminUser);
                 _writerContext.UserRoles.Add(new UserRole
                 {
