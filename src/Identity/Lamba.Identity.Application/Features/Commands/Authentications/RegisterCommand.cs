@@ -5,7 +5,6 @@ using Lamba.Identity.Application.Infrastructure.Repositories.UoW;
 using Lamba.Identity.Application.Infrastructure.Repositories.Writers;
 using Lamba.Identity.Domain.Entities;
 using Lamba.Security.Abstract;
-using Lamba.Security.Common;
 using MediatR;
 
 namespace Lamba.Identity.Application.Features.Commands.Authentications

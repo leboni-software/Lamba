@@ -2,7 +2,6 @@
 using Lamba.Identity.Application.Features.Commands.Users.Dto;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Lamba.Identity.Api.Controllers

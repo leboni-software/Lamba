@@ -1,6 +1,5 @@
 ﻿using Lamba.Identity.Domain.Entities;
 using Lamba.Identity.Infrastructure.Data.Contexts;
-using Lamba.Security.Common;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
