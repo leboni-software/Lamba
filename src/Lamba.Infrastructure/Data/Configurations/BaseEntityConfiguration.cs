@@ -16,6 +16,7 @@ namespace Lamba.Infrastructure.Data.Configurations
             else if (typeof(TKey).Equals(typeof(Guid)))
                 builder.Property(x => x.Id).IsRequired().ValueGeneratedOnAdd().HasDefaultValueSql(NpgsqlEntityConfigurationConstant.DefaultRandomUUID);
             builder.Property(x => x.CreatedAt).IsRequired().ValueGeneratedOnAdd().HasDefaultValueSql(NpgsqlEntityConfigurationConstant.DefaultDateTimeUTC);
+            builder.Property(x => x.CreatedUserId).IsRequired(false);
         }
     }
 }

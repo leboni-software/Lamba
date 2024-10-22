@@ -11,7 +11,9 @@ namespace Lamba.Infrastructure.Data.Configurations
         {
             base.Configure(builder);
             builder.Property(x => x.UpdatedAt).IsRequired(false);
+            builder.Property(x => x.UpdatedUserId).IsRequired(false);
             builder.Property(x => x.DeletedAt).IsRequired(false);
+            builder.Property(x => x.DeletedUserId).IsRequired(false);
             builder.HasQueryFilter(x => x.DeletedAt == null);
         }
     }
