@@ -1,6 +1,6 @@
 ﻿namespace Lamba.Domain.Abstract
 {
-    internal interface IHasDeletedAt
+    public interface IHasDeletedAt
     {
         public DateTime? DeletedAt { get; set; }
     }
