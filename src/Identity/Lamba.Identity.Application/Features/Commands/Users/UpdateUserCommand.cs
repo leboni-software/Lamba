@@ -1,4 +1,5 @@
-﻿using Lamba.Identity.Application.Common.Constants;
+﻿using Lamba.Identity.Application.Common.Accessors;
+using Lamba.Identity.Application.Common.Constants;
 using Lamba.Identity.Application.Common.Handlers;
 using Lamba.Identity.Application.Infrastructure.Repositories.Readers;
 using Lamba.Identity.Application.Infrastructure.Repositories.Writers;
@@ -19,11 +20,13 @@ namespace Lamba.Identity.Application.Features.Commands.Users
     {
         private readonly IUserReaderRepository _userReaderRepository;
         private readonly IUserWriterRepository _userWriterRepository;
+        private readonly ICurrentUserAccessor _currentUserAccessor;
 
-        public UpdateUserCommandHandler(IUserWriterRepository userWriterRepository, IUserReaderRepository userReaderRepository)
+        public UpdateUserCommandHandler(IUserWriterRepository userWriterRepository, IUserReaderRepository userReaderRepository, ICurrentUserAccessor currentUserAccessor)
         {
             _userWriterRepository = userWriterRepository;
             _userReaderRepository = userReaderRepository;
+            _currentUserAccessor = currentUserAccessor;
         }
 
         public async Task<bool> Handle(UpdateUserCommand request, CancellationToken cancellationToken)
@@ -34,6 +37,7 @@ namespace Lamba.Identity.Application.Features.Commands.Users
             user.SetLastName(request.LastName);
             user.SetUsername(request.Username);
             user.SetEmail(request.Email);
+            user.UpdatedUserId = _currentUserAccessor.GetId();
             _userWriterRepository.Attach(user);
             _userWriterRepository.Update(user);
             await _userWriterRepository.SaveChangesAsync(cancellationToken);
