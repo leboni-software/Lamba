@@ -56,6 +56,7 @@ namespace Lamba.Identity.Infrastructure.Data
                 var permissions = new List<Permission>
                 {
                     new() { CommandName = "UpdateUserCommand" },
+                    new() { CommandName = "DeleteUserCommand" },
                     new() { CommandName = "GetUserQuery" }
                 };
                 _writerContext.Permissions.AddRange(permissions);

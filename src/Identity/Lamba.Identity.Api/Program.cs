@@ -1,5 +1,6 @@
 using Lamba.Common.Filters;
 using Lamba.Identity.Application;
+using Lamba.Identity.Application.Common.Accessors;
 using Lamba.Identity.Infrastructure;
 using Lamba.Identity.Infrastructure.Data;
 using Lamba.Security;
@@ -18,6 +19,7 @@ builder.Services.AddControllers(opt =>
 });
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddHttpContextAccessor();
+builder.Services.AddScoped<ICurrentUserAccessor, CurrentUserAccessor>();
 
 var app = builder.Build();
 

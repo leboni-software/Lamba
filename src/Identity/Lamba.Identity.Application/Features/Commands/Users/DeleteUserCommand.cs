@@ -7,39 +7,31 @@ using MediatR;
 
 namespace Lamba.Identity.Application.Features.Commands.Users
 {
-    public class UpdateUserCommand : BaseAuthorizeRequest<bool>
+    public class DeleteUserCommand : BaseAuthorizeRequest<bool>
     {
         public Guid Id { get; set; }
-        public string FirstName { get; set; } = null!;
-        public string LastName { get; set; } = null!;
-        public string Username { get; set; } = null!;
-        public string Email { get; set; } = null!;
     }
 
-    public class UpdateUserCommandHandler : IRequestHandler<UpdateUserCommand, bool>
+    public class DeleteUserCommandHandler : IRequestHandler<DeleteUserCommand, bool>
     {
-        private readonly IUserReaderRepository _userReaderRepository;
         private readonly IUserWriterRepository _userWriterRepository;
+        private readonly IUserReaderRepository _userReaderRepository;
         private readonly ICurrentUserAccessor _currentUserAccessor;
 
-        public UpdateUserCommandHandler(IUserWriterRepository userWriterRepository, IUserReaderRepository userReaderRepository, ICurrentUserAccessor currentUserAccessor)
+        public DeleteUserCommandHandler(IUserWriterRepository userWriterRepository, IUserReaderRepository userReaderRepository, ICurrentUserAccessor currentUserAccessor)
         {
             _userWriterRepository = userWriterRepository;
             _userReaderRepository = userReaderRepository;
             _currentUserAccessor = currentUserAccessor;
         }
 
-        public async Task<bool> Handle(UpdateUserCommand request, CancellationToken cancellationToken)
+        public async Task<bool> Handle(DeleteUserCommand request, CancellationToken cancellationToken)
         {
             var user = await _userReaderRepository.GetAsync(request.Id, cancellationToken);
             if (user is null) throw new Exception(UserMessages.UserNotFound);
-            user.SetFirstName(request.FirstName);
-            user.SetLastName(request.LastName);
-            user.SetUsername(request.Username);
-            user.SetEmail(request.Email);
-            user.UpdatedUserId = _currentUserAccessor.GetId();
+            user.DeletedUserId = _currentUserAccessor.GetId();
             _userWriterRepository.Attach(user);
-            _userWriterRepository.Update(user);
+            _userWriterRepository.Delete(user);
             await _userWriterRepository.SaveChangesAsync(cancellationToken);
             return true;
         }

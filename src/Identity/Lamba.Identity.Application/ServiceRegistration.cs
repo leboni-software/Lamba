@@ -1,4 +1,4 @@
-﻿using Lamba.Identity.Application.Common.Behaviours;
+﻿using Lamba.Identity.Application.Common.Behaviors;
 using Lamba.Security;
 using MediatR;
 using Microsoft.Extensions.Configuration;
