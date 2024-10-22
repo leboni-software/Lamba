@@ -37,5 +37,11 @@ namespace Lamba.Identity.Api.Controllers
         {
             return await _mediator.Send(new GetUserQuery { Id = id }, cancellationToken);
         }
+
+        [HttpDelete("{id}")]
+        public async Task<bool> DeleteById([FromRoute] Guid id, CancellationToken cancellationToken)
+        {
+            return await _mediator.Send(new DeleteUserCommand { Id = id }, cancellationToken);
+        }
     }
 }
