@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
-namespace Lamba.Identity.Application.Common.Behaviours
+namespace Lamba.Identity.Application.Common.Behaviors
 {
     public class AuthorizePipelineBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
         where TRequest : BaseAuthorizeRequest<TResponse>
