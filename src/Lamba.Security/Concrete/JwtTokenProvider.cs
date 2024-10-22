@@ -1,4 +1,5 @@
-﻿using Lamba.Security.Abstract;
+﻿using Lamba.Common.Constants;
+using Lamba.Security.Abstract;
 using Lamba.Security.Common;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.JsonWebTokens;
@@ -19,9 +20,9 @@ namespace Lamba.Security.Concrete
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity([
-                    new Claim(LambaSecurityConstants.IdentifierClaim, id.ToString()),
-                    new Claim(LambaSecurityConstants.UsernameClaim, username),
-                    new Claim(LambaSecurityConstants.RoleClaim, role)]),
+                    new Claim(SecurityConstants.IdentifierClaim, id.ToString()),
+                    new Claim(SecurityConstants.UsernameClaim, username),
+                    new Claim(SecurityConstants.RoleClaim, role)]),
                 Expires = DateTime.UtcNow.AddMinutes(_tokenOptions.ExpirationInMinutes),
                 SigningCredentials = credentials,
                 Issuer = _tokenOptions.Issuer,

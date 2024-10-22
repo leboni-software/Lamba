@@ -1,6 +1,4 @@
-﻿using Lamba.Domain.Abstract;
-using Lamba.Domain.Concrete;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 
 namespace Lamba.Infrastructure.Data.Contexts
 {
