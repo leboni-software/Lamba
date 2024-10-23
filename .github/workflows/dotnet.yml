@@ -23,6 +23,6 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore src/Identity/Lamba.Identity.Api
     - name: Build
-      run: dotnet build --no-restore
+      run: dotnet build --no-restore src/Identity/Lamba.Identity.Api
     - name: Test
-      run: dotnet test --no-build --verbosity normal
+      run: dotnet test --no-build src/Identity/Lamba.Identity.Api --verbosity normal
