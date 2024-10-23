@@ -1,0 +1,24 @@
+version: '3.4'
+
+services:
+  lamba.identity.api:
+    image: ${DOCKER_REGISTRY-}lambaidentityapi
+    container_name: lamba.identity.api
+    build:
+      context: .
+      dockerfile: src/Identity/Lamba.Identity.Api/Dockerfile
+    ports:
+        - "5000:5000"
+        - "5001:5001"
+
+  lamba.identity.database:
+    image: postgres:latest
+    container_name: lamba.identity.database
+    environment:
+        - POSTGRES_DB=LambaIdentity
+        - POSTGRES_USER=postgres
+        - POSTGRES_PASSWORD=w+^0I+k8#x09
+    volumes:
+        - ./.containers/lamba-identity-db:/var/lib/postgresql/data
+    ports:
+        - "5432:5432"
