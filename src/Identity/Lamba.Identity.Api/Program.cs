@@ -1,10 +1,10 @@
-using Lamba.Common.Filters;
 using Lamba.Identity.Application;
 using Lamba.Identity.Application.Common.Accessors;
 using Lamba.Identity.Infrastructure;
 using Lamba.Identity.Infrastructure.Data;
 using Lamba.Security;
 using Lamba.Logger;
+using Lamba.Identity.Api.Filters;
 
 var builder = WebApplication.CreateBuilder(args);
 
