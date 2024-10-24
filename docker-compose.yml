@@ -10,6 +10,9 @@ services:
     ports:
         - "5000:5000"
         - "5001:5001"
+    depends_on:
+        - lamba.identity.database
+        - lamba.elasticsearch
 
   lamba.identity.database:
     image: postgres:latest
@@ -22,3 +25,30 @@ services:
         - ./.containers/lamba-identity-db:/var/lib/postgresql/data
     ports:
         - "5432:5432"
+
+  lamba.elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.15.3
+    environment:
+     - node.name=lamba.elasticsearch
+     - discovery.type=single-node
+     - bootstrap.memory_lock=true
+     - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+     - xpack.security.enabled=false
+     - xpack.security.transport.ssl.enabled=false
+     - ELASTIC_USERNAME=elasticsearch
+     - ELASTIC_PASSWORD=YX!qq<6s8?2K
+    ports:
+      - 9200:9200
+    container_name: lamba.elasticsearch
+
+  lamba.kibana:
+    image: docker.elastic.co/kibana/kibana:8.15.3
+    environment:
+     - ELASTICSEARCH_HOSTS=http://lamba.elasticsearch:9200
+     - ELASTICSEARCH_USERNAME=elasticsearch
+     - ELASTICSEARCH_PASSWORD=YX!qq<6s8?2K
+    ports:
+      - 5601:5601
+    container_name: lamba.kibana
+    depends_on:
+      - lamba.elasticsearch
