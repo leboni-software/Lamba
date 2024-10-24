@@ -1,9 +1,10 @@
-using Lamba.Common.Filters;
 using Lamba.Identity.Application;
 using Lamba.Identity.Application.Common.Accessors;
 using Lamba.Identity.Infrastructure;
 using Lamba.Identity.Infrastructure.Data;
 using Lamba.Security;
+using Lamba.Logger;
+using Lamba.Identity.Api.Filters;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,9 +18,11 @@ builder.Services.AddControllers(opt =>
     opt.Filters.Add<ExceptionFilter>();
     opt.Filters.Add<ResultFilter>();
 });
+builder.Services.AddScoped<ExceptionFilter>();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddScoped<ICurrentUserAccessor, CurrentUserAccessor>();
+builder.Host.UseLambaLogger("lamba-identity");
 
 var app = builder.Build();
 

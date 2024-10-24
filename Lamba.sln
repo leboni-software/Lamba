@@ -33,6 +33,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lamba.Common", "src\Lamba.C
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{A1660A98-B35D-43A5-B1C6-F05B0B869507}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lamba.Logger", "src\Lamba.Logger\Lamba.Logger.csproj", "{BA379DB2-C856-4E3E-B0CC-2B66AEE0CF25}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -87,6 +89,10 @@ Global
 		{A1660A98-B35D-43A5-B1C6-F05B0B869507}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A1660A98-B35D-43A5-B1C6-F05B0B869507}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A1660A98-B35D-43A5-B1C6-F05B0B869507}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA379DB2-C856-4E3E-B0CC-2B66AEE0CF25}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA379DB2-C856-4E3E-B0CC-2B66AEE0CF25}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA379DB2-C856-4E3E-B0CC-2B66AEE0CF25}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA379DB2-C856-4E3E-B0CC-2B66AEE0CF25}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -104,6 +110,7 @@ Global
 		{BF90EC09-5A10-4E36-8E0D-766FFE76408B} = {A21125EC-23F6-420C-822A-01851C8B94B8}
 		{B2A7BFC7-D5A9-4DAB-9E58-36D340EA71EF} = {A21125EC-23F6-420C-822A-01851C8B94B8}
 		{D9D90AA2-9694-44E2-AF6A-E47B179A96AF} = {CAF73567-72A7-4980-B64D-EE08CB9FD2EA}
+		{BA379DB2-C856-4E3E-B0CC-2B66AEE0CF25} = {CAF73567-72A7-4980-B64D-EE08CB9FD2EA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9124AE68-2609-4900-BE85-BD599FDD28CD}

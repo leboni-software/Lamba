@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 
-namespace Lamba.Common.Filters
+namespace Lamba.Identity.Api.Filters
 {
     public class ResultFilter : IAsyncActionFilter
     {
