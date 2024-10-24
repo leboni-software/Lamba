@@ -3,7 +3,6 @@ using Elastic.Ingest.Elasticsearch.DataStreams;
 using Elastic.Serilog.Sinks;
 using Elastic.Transport;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Polly;
 using Serilog;
@@ -53,7 +52,7 @@ namespace Lamba.Logger
                             transport.Authentication(new BasicAuthentication(username, password));
                         }, restrictedToMinimumLevel: LogEventLevel.Error);
                 });
-                
+
                 if (context.HostingEnvironment.IsDevelopment() || context.HostingEnvironment.IsEnvironment("Local"))
                 {
                     configuration.WriteTo.Console(LogEventLevel.Information);
