@@ -18,6 +18,7 @@ builder.Services.AddControllers(opt =>
     opt.Filters.Add<ExceptionFilter>();
     opt.Filters.Add<ResultFilter>();
 });
+builder.Services.AddScoped<ExceptionFilter>();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddScoped<ICurrentUserAccessor, CurrentUserAccessor>();

@@ -5,7 +5,7 @@ using System.Net;
 
 namespace Lamba.Identity.Api.Filters
 {
-    public class ExceptionFilter : IAsyncExceptionFilter
+    public class ExceptionFilter(ILogger<ExceptionFilter> logger) : IAsyncExceptionFilter
     {
         public Task OnExceptionAsync(ExceptionContext context)
         {
@@ -27,6 +27,7 @@ namespace Lamba.Identity.Api.Filters
                 StatusCode = (int)statusCode
             };
             context.ExceptionHandled = true;
+            logger.LogError(context.Exception, context.Exception.Message);
             return Task.CompletedTask;
         }
     }
