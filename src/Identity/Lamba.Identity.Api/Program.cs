@@ -4,6 +4,7 @@ using Lamba.Identity.Application.Common.Accessors;
 using Lamba.Identity.Infrastructure;
 using Lamba.Identity.Infrastructure.Data;
 using Lamba.Security;
+using Lamba.Logger;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,6 +21,7 @@ builder.Services.AddControllers(opt =>
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddScoped<ICurrentUserAccessor, CurrentUserAccessor>();
+builder.Host.UseLambaLogger("lamba-identity");
 
 var app = builder.Build();
 
