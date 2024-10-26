@@ -12,24 +12,22 @@ namespace Lamba.Identity.Application.Features.Commands.Roles
         public Guid Id { get; set; }
     }
 
-    public class DeleteRoleCommandHandler : IRequestHandler<DeleteRoleCommand, bool>
+    public class DeleteRoleCommandHandler : BaseAuthorizeRequestHandler<DeleteRoleCommand, bool>
     {
         private readonly IRoleWriterRepository _roleWriterRepository;
         private readonly IRoleReaderRepository _roleReaderRepository;
-        private readonly ICurrentUserAccessor _currentUserAccessor;
 
-        public DeleteRoleCommandHandler(IRoleWriterRepository roleWriterRepository, IRoleReaderRepository roleReaderRepository, ICurrentUserAccessor currentUserAccessor)
+        public DeleteRoleCommandHandler(ICurrentUserAccessor currentUserAccessor, IRoleWriterRepository roleWriterRepository, IRoleReaderRepository roleReaderRepository) : base(currentUserAccessor)
         {
             _roleWriterRepository = roleWriterRepository;
             _roleReaderRepository = roleReaderRepository;
-            _currentUserAccessor = currentUserAccessor;
         }
 
-        public async Task<bool> Handle(DeleteRoleCommand request, CancellationToken cancellationToken)
+        public override async Task<bool> Handle(DeleteRoleCommand request, CancellationToken cancellationToken)
         {
             var role = await _roleReaderRepository.GetAsync(request.Id, cancellationToken);
             if (role is null) throw new Exception(RoleMessages.RoleNotFound);
-            role.DeletedUserId = _currentUserAccessor.GetId();
+            role.DeletedUserId = _currentUserAccessor?.GetId();
             _roleWriterRepository.Attach(role);
             _roleWriterRepository.Delete(role);
             await _roleWriterRepository.SaveChangesAsync(cancellationToken);

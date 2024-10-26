@@ -12,16 +12,16 @@ namespace Lamba.Identity.Application.Features.Queries.Users
         public required Guid Id { get; set; }
     }
 
-    public class GetUserQeuryHandler : IRequestHandler<GetUserQuery, UserResponseDto>
+    public class GetUserQeuryHandler : BaseAuthorizeRequestHandler<GetUserQuery, UserResponseDto>
     {
         private readonly IUserReaderRepository _userReaderRepository;
 
-        public GetUserQeuryHandler(IUserReaderRepository userReaderRepository)
+        public GetUserQeuryHandler(IUserReaderRepository userReaderRepository) : base()
         {
             _userReaderRepository = userReaderRepository;
         }
 
-        public async Task<UserResponseDto> Handle(GetUserQuery request, CancellationToken cancellationToken)
+        public override async Task<UserResponseDto> Handle(GetUserQuery request, CancellationToken cancellationToken)
         {
             var user = await _userReaderRepository.GetQueryable()
                 .Where(x => x.Id == request.Id)

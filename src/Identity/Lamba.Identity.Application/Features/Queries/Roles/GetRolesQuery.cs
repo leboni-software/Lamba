@@ -11,16 +11,16 @@ namespace Lamba.Identity.Application.Features.Queries.Roles
 
     }
 
-    public class GetRolesQueryHandler : IRequestHandler<GetRolesQuery, List<GetRoleResponseDto>>
+    public class GetRolesQueryHandler : BaseAuthorizeRequestHandler<GetRolesQuery, List<GetRoleResponseDto>>
     {
         private readonly IRoleReaderRepository _roleReaderRepository;
 
-        public GetRolesQueryHandler(IRoleReaderRepository roleReaderRepository)
+        public GetRolesQueryHandler(IRoleReaderRepository roleReaderRepository) : base()
         {
             _roleReaderRepository = roleReaderRepository;
         }
 
-        public async Task<List<GetRoleResponseDto>> Handle(GetRolesQuery request, CancellationToken cancellationToken)
+        public override async Task<List<GetRoleResponseDto>> Handle(GetRolesQuery request, CancellationToken cancellationToken)
         {
             return await _roleReaderRepository.GetQueryable()
                 .Select(x => new GetRoleResponseDto
