@@ -1,7 +1,6 @@
 ﻿using Lamba.Identity.Application.Common.Handlers;
 using Lamba.Identity.Application.Features.Queries.Roles.Dto;
 using Lamba.Identity.Application.Infrastructure.Repositories.Readers;
-using MediatR;
 using Microsoft.EntityFrameworkCore;
 
 namespace Lamba.Identity.Application.Features.Queries.Roles
@@ -11,16 +10,16 @@ namespace Lamba.Identity.Application.Features.Queries.Roles
         public Guid Id { get; set; }
     }
 
-    public class GetRoleQueryHandler : IRequestHandler<GetRoleQuery, GetRoleResponseDto?>
+    public class GetRoleQueryHandler : BaseAuthorizeRequestHandler<GetRoleQuery, GetRoleResponseDto?>
     {
         private readonly IRoleReaderRepository _roleReaderRepository;
 
-        public GetRoleQueryHandler(IRoleReaderRepository roleReaderRepository)
+        public GetRoleQueryHandler(IRoleReaderRepository roleReaderRepository) : base()
         {
             _roleReaderRepository = roleReaderRepository;
         }
 
-        public async Task<GetRoleResponseDto?> Handle(GetRoleQuery request, CancellationToken cancellationToken)
+        public override async Task<GetRoleResponseDto?> Handle(GetRoleQuery request, CancellationToken cancellationToken)
         {
             return await _roleReaderRepository.GetQueryable()
                 .Where(x => x.Id == request.Id)

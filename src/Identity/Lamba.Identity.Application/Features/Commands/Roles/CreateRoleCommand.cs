@@ -2,7 +2,6 @@
 using Lamba.Identity.Application.Common.Handlers;
 using Lamba.Identity.Application.Infrastructure.Repositories.Writers;
 using Lamba.Identity.Domain.Entities;
-using MediatR;
 
 namespace Lamba.Identity.Application.Features.Commands.Roles
 {
@@ -11,20 +10,19 @@ namespace Lamba.Identity.Application.Features.Commands.Roles
         public string Name { get; set; } = null!;
     }
 
-    public class CreateRoleCommandHandler : IRequestHandler<CreateRoleCommand, Guid>
+    public class CreateRoleCommandHandler : BaseAuthorizeRequestHandler<CreateRoleCommand, Guid>
     {
         private readonly IRoleWriterRepository _roleWriterRepository;
-        private readonly ICurrentUserAccessor _currentUserAccessor;
 
-        public CreateRoleCommandHandler(IRoleWriterRepository roleWriterRepository, ICurrentUserAccessor currentUserAccessor)
+        public CreateRoleCommandHandler(ICurrentUserAccessor currentUserAccessor, IRoleWriterRepository roleWriterRepository) : base(currentUserAccessor)
         {
             _roleWriterRepository = roleWriterRepository;
-            _currentUserAccessor = currentUserAccessor;
         }
 
-        public async Task<Guid> Handle(CreateRoleCommand request, CancellationToken cancellationToken)
+        public override async Task<Guid> Handle(CreateRoleCommand request, CancellationToken cancellationToken)
         {
             var role = new Role(request.Name, false, false);
+            role.CreatedUserId = _currentUserAccessor?.GetId();
             var result = await _roleWriterRepository.AddAsync(role, cancellationToken);
             await _roleWriterRepository.SaveChangesAsync(cancellationToken);
             return result.Entity.Id;
