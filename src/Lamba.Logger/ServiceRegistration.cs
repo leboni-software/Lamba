@@ -3,7 +3,6 @@ using Elastic.Ingest.Elasticsearch.DataStreams;
 using Elastic.Serilog.Sinks;
 using Elastic.Transport;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Polly;
 using Serilog;
@@ -41,19 +40,26 @@ namespace Lamba.Logger
 
                 policy.Execute(() =>
                 {
-                    configuration.WriteTo.Elasticsearch(
-                        [new Uri(elasticUri)],
-                        opt =>
-                        {
-                            opt.DataStream = new DataStreamName("logs", dataset, context.HostingEnvironment.EnvironmentName);
-                            opt.BootstrapMethod = BootstrapMethod.Failure;
-                        },
-                        transport =>
-                        {
-                            transport.Authentication(new BasicAuthentication(username, password));
-                        }, restrictedToMinimumLevel: LogEventLevel.Error);
+                    try
+                    {
+                        configuration.WriteTo.Elasticsearch(
+                            [new Uri(elasticUri)],
+                            opt =>
+                            {
+                                opt.DataStream = new DataStreamName("logs", dataset, context.HostingEnvironment.EnvironmentName);
+                                opt.BootstrapMethod = BootstrapMethod.Failure;
+                            },
+                            transport =>
+                            {
+                                transport.Authentication(new BasicAuthentication(username, password));
+                            }, restrictedToMinimumLevel: LogEventLevel.Error);
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine($"Failed to connect to Elasticsearch: {ex.Message}");
+                    }
                 });
-                
+
                 if (context.HostingEnvironment.IsDevelopment() || context.HostingEnvironment.IsEnvironment("Local"))
                 {
                     configuration.WriteTo.Console(LogEventLevel.Information);
