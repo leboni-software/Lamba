@@ -2,7 +2,6 @@
 using Lamba.Identity.Application.Common.Handlers;
 using Lamba.Identity.Application.Infrastructure.Repositories.Writers;
 using Lamba.Identity.Domain.Entities;
-using MediatR;
 
 namespace Lamba.Identity.Application.Features.Commands.Roles
 {

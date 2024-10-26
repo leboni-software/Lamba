@@ -2,7 +2,6 @@
 using Lamba.Identity.Application.Common.Handlers;
 using Lamba.Identity.Application.Features.Queries.Users.Dto;
 using Lamba.Identity.Application.Infrastructure.Repositories.Readers;
-using MediatR;
 using Microsoft.EntityFrameworkCore;
 
 namespace Lamba.Identity.Application.Features.Queries.Users

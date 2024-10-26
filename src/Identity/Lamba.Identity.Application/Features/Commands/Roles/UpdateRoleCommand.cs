@@ -3,7 +3,6 @@ using Lamba.Identity.Application.Common.Constants;
 using Lamba.Identity.Application.Common.Handlers;
 using Lamba.Identity.Application.Infrastructure.Repositories.Readers;
 using Lamba.Identity.Application.Infrastructure.Repositories.Writers;
-using MediatR;
 
 namespace Lamba.Identity.Application.Features.Commands.Roles
 {

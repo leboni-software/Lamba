@@ -1,5 +1,4 @@
-﻿using Lamba.Identity.Application.Common.Accessors;
-using MediatR;
+﻿using MediatR;
 
 namespace Lamba.Identity.Application.Common.Handlers
 {
