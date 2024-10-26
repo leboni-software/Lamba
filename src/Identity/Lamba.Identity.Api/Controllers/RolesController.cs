@@ -4,7 +4,6 @@ using Lamba.Identity.Application.Features.Queries.Roles;
 using Lamba.Identity.Application.Features.Queries.Roles.Dto;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Lamba.Identity.Api.Controllers
