@@ -52,7 +52,12 @@ namespace Lamba.Identity.Infrastructure.Data
                 {
                     new() { CommandName = "UpdateUserCommand" },
                     new() { CommandName = "DeleteUserCommand" },
-                    new() { CommandName = "GetUserQuery" }
+                    new() { CommandName = "GetUserQuery" },
+                    new() { CommandName = "CreateRoleCommand" },
+                    new() { CommandName = "DeleteRoleCommand" },
+                    new() { CommandName = "UpdateRoleCommand" },
+                    new() { CommandName = "GetRoleQuery" },
+                    new() { CommandName = "GetRolesQuery" }
                 };
                 _writerContext.Permissions.AddRange(permissions);
                 foreach (var permission in permissions)
