@@ -1,5 +1,7 @@
 ﻿using Lamba.Identity.Application.Features.Commands.Roles;
 using Lamba.Identity.Application.Features.Commands.Roles.Dto;
+using Lamba.Identity.Application.Features.Queries.Roles;
+using Lamba.Identity.Application.Features.Queries.Roles.Dto;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -43,6 +45,18 @@ namespace Lamba.Identity.Api.Controllers
             {
                 Id = id
             }, cancellationToken);
+        }
+
+        [HttpGet("{id}")]
+        public async Task<GetRoleResponseDto?> GetById([FromRoute] Guid id, CancellationToken cancellationToken)
+        {
+            return await _mediator.Send(new GetRoleQuery { Id = id }, cancellationToken);
+        }
+
+        [HttpGet]
+        public async Task<List<GetRoleResponseDto>> Get(CancellationToken cancellationToken)
+        {
+            return await _mediator.Send(new GetRolesQuery(), cancellationToken);
         }
     }
 }

@@ -46,12 +46,7 @@ namespace Lamba.Identity.Infrastructure.Data
         {
             if (!_writerContext.Roles.Any() && !_writerContext.Users.Any() && !_writerContext.Permissions.Any())
             {
-                var adminRole = new Role
-                {
-                    Name = "Admin",
-                    IsDefaultRole = false,
-                    IsMasterRole = true
-                };
+                var adminRole = new Role("Admin", true, false);
                 _writerContext.Roles.Add(adminRole);
                 var permissions = new List<Permission>
                 {
@@ -80,12 +75,7 @@ namespace Lamba.Identity.Infrastructure.Data
                     Role = adminRole,
                     User = adminUser
                 });
-                _writerContext.Roles.Add(new Role
-                {
-                    Name = "User",
-                    IsDefaultRole = true,
-                    IsMasterRole = false
-                });
+                _writerContext.Roles.Add(new Role("User", false, true));
                 _writerContext.SaveChanges();
             }
         }
