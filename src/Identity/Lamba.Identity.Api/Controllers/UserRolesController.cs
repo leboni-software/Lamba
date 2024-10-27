@@ -1,7 +1,6 @@
 ﻿using Lamba.Identity.Application.Features.Commands.UserRoles;
 using Lamba.Identity.Application.Features.Commands.UserRoles.Dto;
 using MediatR;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Lamba.Identity.Api.Controllers
