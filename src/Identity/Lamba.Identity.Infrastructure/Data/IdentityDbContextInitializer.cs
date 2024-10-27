@@ -57,7 +57,9 @@ namespace Lamba.Identity.Infrastructure.Data
                     new() { CommandName = "DeleteRoleCommand" },
                     new() { CommandName = "UpdateRoleCommand" },
                     new() { CommandName = "GetRoleQuery" },
-                    new() { CommandName = "GetRolesQuery" }
+                    new() { CommandName = "GetRolesQuery" },
+                    new() { CommandName = "AddUserRoleCommand" },
+                    new() { CommandName = "DeleteUserRoleCommand" }
                 };
                 _writerContext.Permissions.AddRange(permissions);
                 foreach (var permission in permissions)
@@ -75,11 +77,7 @@ namespace Lamba.Identity.Infrastructure.Data
                     "alperen.kucukali@hotmail.com",
                     "9^Hc[3q,0l2<At^z@8");
                 _writerContext.Users.Add(adminUser);
-                _writerContext.UserRoles.Add(new UserRole
-                {
-                    Role = adminRole,
-                    User = adminUser
-                });
+                _writerContext.UserRoles.Add(new UserRole(adminUser, adminRole));
                 _writerContext.Roles.Add(new Role("User", false, true));
                 _writerContext.SaveChanges();
             }

@@ -46,7 +46,7 @@ namespace Lamba.Identity.Application.Features.Commands.Authentications
             if (defaultRole is null) throw new Exception(AuthenticationMessages.DefaultRoleNotFound);
             await _identityUnitOfWork.ExecuteTransactionAsync(async () =>
             {
-                user.UserRoles.Add(new UserRole { User = user, RoleId = defaultRole.Id });
+                user.UserRoles.Add(new UserRole(user, defaultRole.Id));
                 await _userWriterRepository.AddAsync(user, cancellationToken);
             }, cancellationToken);
             var token = _tokenProvider.CreateToken(user.Id, user.Username, defaultRole.Name);
